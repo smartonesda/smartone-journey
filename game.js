@@ -416,10 +416,16 @@ async function handleQuiz(player) {
   const level = player.level || 1;
 
   let bank = null;
+  // Logika Anda di sini sudah bagus (menggunakan optional chaining '?')
   if (currentQuizLevels?.[level]?.length > 0) {
     bank = currentQuizLevels[level];
   } else if (currentQuizBank?.length > 0) {
     bank = currentQuizBank;
+  }
+  
+  // Tambahkan fallback jika level 3 tapi soalnya tidak ada, pakai level 1
+  if (!bank && currentQuizLevels?.["1"]?.length > 0) {
+    bank = currentQuizLevels["1"];
   }
 
   if (!bank || bank.length === 0) {
@@ -428,23 +434,28 @@ async function handleQuiz(player) {
   }
 
   // ---- MINTA JAWABAN ----
-  const { index, item } = await askQuiz(bank);
+  // PERBAIKAN DI SINI: Terima 'answer' dan 'correct', bukan 'index'
+  const { answer, correct, item } = await askQuiz(bank, level);
 
-  if (index === null) {
+  // PERBAIKAN DI SINI: Cek 'answer'
+  if (answer === null) {
     showInModalOrNotif(`${player.name} tidak menjawab.`);
     return;
   }
 
   // ---- CEK JAWABAN ----
-  if (index === item.correct) {
+  // PERBAIKAN DI SINI: Cek variabel 'correct'
+  if (correct) {
     const bonus = BONUS_BY_LEVEL[level] || BONUS_BY_LEVEL[1];
     player.points += bonus;
-    showInModalOrNotif(`${player.name}: Jawaban benar! +${bonus.toLocaleString("id-ID")} poin`);
+    // Tampilkan notifikasi SETELAH modal ditutup
+    showNotif(`${player.name}: Jawaban benar! +${bonus.toLocaleString("id-ID")} poin`);
   } else {
-    showInModalOrNotif(`${player.name}: Jawaban salah.`);
+    showNotif(`${player.name}: Jawaban salah.`);
   }
 
   updatePlayersPanel();
+  updatePlayerLevel(player); // Pindahkan ini ke sini agar level update setelah kuis
 }
 
 
