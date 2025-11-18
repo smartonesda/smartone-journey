@@ -67,10 +67,9 @@ let currentEduText = {};
 
 const tokenColors = ["#22d3ee", "#fbbf24", "#ef4444", "#22c55e"];
 let players = [];
-let selectedPlayerCount = 2;
-let selectedCategoryKey = null;
 let turn = 0;
 let started = false;
+
 
 const LEVEL_THRESHOLDS = { 2: 130000, 3: 300000 };
 const BONUS_BY_LEVEL = { 1: 15000, 2: 8000, 3: 5000 };
@@ -83,34 +82,24 @@ async function loadGameData() {
     allGameData = await response.json();
     populateCategorySelect();
     startBtn.disabled = false;
-    startBtn.textContent = "Yok Mulai";
+    startBtn.textContent = "YOK Mulai"; // <-- Ganti teks tombol
+
   } catch (err) {
     console.error("Gagal memuat data_game.json:", err);
     turnInfoEl.textContent = "Error: Gagal memuat data. Coba refresh halaman.";
   }
 }
 
-/* ---------------- populate kategori (card group) ---------------- */
+// --- FUNGSI BARU: Mengisi Dropdown Kategori ---
 function populateCategorySelect() {
   if (!allGameData) return;
-  const categoryGroup = document.getElementById("category-card-group");
-  categoryGroup.innerHTML = "";
-  const categories = Object.keys(allGameData.kategori || {});
-  categories.forEach((key, index) => {
-    const card = document.createElement("div");
-    card.className = "card-choice";
-    card.textContent = allGameData.kategori[key].nama || key;
-    card.dataset.key = key;
-    if (index === 0) {
-      card.classList.add("selected");
-      selectedCategoryKey = key;
-    }
-    card.addEventListener("click", () => {
-      categoryGroup.querySelectorAll(".card-choice").forEach(c => c.classList.remove("selected"));
-      card.classList.add("selected");
-      selectedCategoryKey = card.dataset.key;
-    });
-    categoryGroup.appendChild(card);
+  categorySel.innerHTML = "";
+  const categories = Object.keys(allGameData.kategori);
+  categories.forEach(key => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = allGameData.kategori[key].nama;
+    categorySel.appendChild(option);
   });
 }
 
@@ -206,6 +195,18 @@ function updatePionPosition(player) {
   pion.style.left = `${Math.round(left)}px`;
   pion.style.top = `${Math.round(top)}px`;
 }
+
+// --- FUNGSI BARU: Listener untuk Tombol Pilihan Pemain ---
+playerChoices.forEach(button => {
+  button.addEventListener("click", () => {
+    // Hapus 'selected' dari semua tombol
+    playerChoices.forEach(btn => btn.classList.remove("selected"));
+    // Tambah 'selected' ke tombol yg diklik
+    button.classList.add("selected");
+    // Simpan nilainya
+    selectedPlayerCount = Number(button.dataset.value);
+  });
+});
 
 playerChoices.forEach(button => {
   button.addEventListener("click", () => {
@@ -412,18 +413,11 @@ async function movePlayerAnimated(player, steps) {
 
 /* ---------------- handleQuiz: menggunakan askQuiz yang baru ---------------- */
 async function handleQuiz(player) {
-  const level = player.level || 1;
-
-  // --- Ambil bank soal sesuai level ---
-  let bank = null;
-  if (currentQuizLevels && currentQuizLevels[level] && currentQuizLevels[level].length > 0) {
-    bank = currentQuizLevels[level];
-  } else if (currentQuizBank && currentQuizBank.length > 0) {
-    bank = currentQuizBank;
-  }
+  const level = player.level || 1; // default level 1
+  const bank = currentQuizLevels[level];
 
   if (!bank || bank.length === 0) {
-    showInModalOrNotif("Tidak ada soal untuk level ini.");
+    toast("Tidak ada soal untuk level ini.");
     return;
   }
 
@@ -436,11 +430,16 @@ async function handleQuiz(player) {
     return;
   }
 
-  const { correct } = result;
+  const item = bank.find(q => q.q === quizQuestion.textContent);
 
-  // --- JAWABAN BENAR ---
-  if (correct) {
-    const bonus = BONUS_BY_LEVEL[level] || BONUS_BY_LEVEL[1];
+  if (!item) {
+    toast("Soal tidak ditemukan.");
+    return;
+  }
+
+  if (ans === item.correct) {
+    // bonus berdasarkan level
+    const bonus = level === 1 ? 15000 : level === 2 ? 8000 : 5000;
     player.points += bonus;
 
     // tampilkan notifikasi setelah modal tutup
@@ -519,9 +518,12 @@ diceEl.addEventListener("click", async () => {
 
 /* ---------------- start button (setup -> game) ---------------- */
 startBtn.addEventListener("click", () => {
-  const n = selectedPlayerCount;
-  const categoryKey = selectedCategoryKey;
-  const selectedCategory = allGameData.kategori[categoryKey] || {};
+  // 1. Ambil nilai dari SEMUA pilihan setup
+  const n = Math.max(2, Math.min(4, Number(playerCountSel.value || 2)));
+  const categoryKey = categorySel.value;
+
+  // 2. Set data global berdasarkan kategori yg dipilih
+  const selectedCategory = allGameData.kategori[categoryKey];
   currentTiles = selectedCategory.tiles || [];
   currentQuizLevels = selectedCategory.quizLevels || null;
   currentQuizBank = selectedCategory.quizBank || [];

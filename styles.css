@@ -486,3 +486,104 @@ dialog {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ======================================================
+   LANDING & SETUP CONTAINERS (BARU)
+====================================================== */
+.setup-container,
+.landing-container {
+  background: var(--bg-medium); /* Konsisten dgn info box */
+  border-radius: 14px;
+  padding: 30px 40px;
+  width: 500px; /* Atur lebar */
+  max-width: 90vw;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.setup-container h2 {
+  margin-top: 20px; /* Jarak antar grup pilihan */
+}
+.setup-container h2:first-child {
+  margin-top: 0;
+}
+.setup-container select {
+  /* Beri style dropdown kategori agar serasi */
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border: 2px solid rgba(255,255,255,0.15);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.setup-container button#startBtn {
+  margin-top: 30px; /* Jarak tombol start */
+}
+
+
+/* ======================================================
+   BUTTON GROUP (BARU)
+====================================================== */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0 0px 0; /* Jarak atas/bawah */
+}
+.btn-choice {
+  background: var(--bg-dark); /* Warna dasar */
+  color: var(--text-light);
+  border: 2px solid var(--bg-medium);
+  flex-grow: 1; /* Biar lebarnya sama */
+  padding: 10px 12px;
+}
+.btn-choice:hover {
+  background: var(--bg-medium); /* Efek hover */
+}
+.btn-choice.selected {
+  background: var(--accent-blue); /* Warna 'selected' */
+  color: #000;
+  border-color: var(--accent-blue);
+}
+
+/* ======================================================
+   CARD GROUP (BARU)
+====================================================== */
+.card-group {
+  display: grid;
+  /* Buat 3 kolom jika muat, jika tidak, otomatis baris baru */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 10px 0 0px 0;
+  width: 100%;
+}
+.card-choice {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border: 2px solid var(--bg-medium);
+  padding: 20px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.9rem; /* Sedikit kecilkan font jika perlu */
+}
+.card-choice:hover {
+  background: var(--bg-medium);
+  transform: translateY(-3px); /* Efek 'hover' keren */
+}
+.card-choice.selected {
+  background: var(--accent-blue);
+  color: #000;
+  border-color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* ======================================================
+   PENYESUAIAN STYLE LAMA
+====================================================== */
+/* Kita hapus style dropdown select yang tidak perlu */
+.setup-container select {
+  display: none; /* Sembunyikan dropdown lama */
+}

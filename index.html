@@ -62,27 +62,17 @@
 
 <body>
   <div id="screen-landing" class="screen active">
-    <div class="landing-container">
-      <h1>SmartOne Finance</h1>
-      <p>Game Edukasi: Bermain Sambil belajar</p>
-      <button id="gassMulaiBtn">GASS MULAI</button>
-    </div>
+    <h1>SmartOne Finance</h1>
+    <p>Game Edukasi: Bermain Sambil belajar</p> <button id="gassMulaiBtn">GASS MULAI</button>
   </div>
 
   <div id="screen-setup" class="screen">
-    <div class="setup-container">
-      <h2>Pilih Kategori:</h2>
-      <div id="category-card-group" class="card-group"></div>
-
-      <h2>Pilih Jumlah Pemain:</h2>
-      <div id="player-count-group" class="btn-group">
-        <button class="btn-choice selected" data-value="2">2 Pemain</button>
-        <button class="btn-choice" data-value="3">3 Pemain</button>
-        <button class="btn-choice" data-value="4">4 Pemain</button>
-      </div>
-
-      <button id="startBtn" disabled>Memuat Data...</button>
-    </div>
+    <h2>Pilih Kategori:</h2> <select id="categorySel"></select>
+    <h2>Pilih Jumlah Pemain:</h2> <select id="playerCount">
+      <option value="2" selected>2 Pemain</option>
+      <option value="3">3 Pemain</option>
+      <option value="4">4 Pemain</option>
+    </select> <button id="startBtn" disabled>Memuat Data...</button>
   </div>
 
   <div id="screen-game" class="screen">

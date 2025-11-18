@@ -25,2408 +25,570 @@
         },
         {
           "type": "expense",
-          "title": "Jajan Tidak Direncanakan",
+          "title": "Service motor",
+          "points": -10000,
+          "effect": "-10.000 Poin"
+        },
+        {
+          "type": "tax",
+          "title": "Pajak penghasilan",
+          "percent": 10,
+          "effect": "-10% dari Skor"
+        },
+        {
+          "type": "save",
+          "title": "Tabungan",
+          "points": 10000,
+          "effect": "Pindahkan 10.000 Poin ke tabungan"
+        },
+        {
+          "type": "bonus",
+          "title": "Bonus Edukasi",
+          "effect": "Jawab kuis: +15.000 Poin jika benar"
+        },
+        {
+          "type": "penalty",
+          "title": "Denda telat bayar",
+          "points": -5000,
+          "effect": "-5.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Freelance",
+          "points": 15000,
+          "effect": "+15.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Pulsa & Data",
+          "points": -8000,
+          "effect": "-8.000 Poin"
+        },
+        {
+          "type": "save",
+          "title": "Tabungan",
+          "points": 5000,
+          "effect": "Pindahkan 5.000 Poin ke tabungan"
+        },
+        {
+          "type": "tax",
+          "title": "Pajak transportasi",
+          "percent": 5,
+          "effect": "-5% dari Skor"
+        },
+        {
+          "type": "bonus",
+          "title": "Bonus Edukasi",
+          "effect": "Jawab kuis: +15.000 Poin jika benar"
+        },
+        {
+          "type": "income",
+          "title": "Uang saku",
+          "points": 10000,
+          "effect": "+10.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Makan di luar",
+          "points": -12000,
+          "effect": "-12.000 Poin"
+        },
+        {
+          "type": "penalty",
+          "title": "Denda perpustakaan",
+          "points": -4000,
+          "effect": "-4.000 Poin"
+        },
+        {
+          "type": "save",
+          "title": "Tabungan",
+          "points": 7000,
+          "effect": "Pindahkan 7.000 Poin ke tabungan"
+        },
+        {
+          "type": "tax",
+          "title": "Pajak daerah",
+          "percent": 7,
+          "effect": "-7% dari Skor"
+        },
+        {
+          "type": "income",
+          "title": "Jual barang bekas",
+          "points": 18000,
+          "effect": "+18.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Beli buku",
+          "points": -9000,
+          "effect": "-9.000 Poin"
+        },
+        {
+          "type": "bonus",
+          "title": "Bonus Edukasi",
+          "effect": "Jawab kuis: +15.000 Poin jika benar"
+        }
+      ],
+      "quizBank": [
+        {
+          "q": "Apa tujuan utama membayar pajak penghasilan?",
+          "choices": [
+            "Untuk tabungan pribadi",
+            "Untuk membiayai layanan publik",
+            "Untuk hadiah"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Menabung sebaiknya dilakukan saat...",
+          "choices": [
+            "Ada sisa poin setelah pengeluaran",
+            "Tidak punya pendapatan",
+            "Saat denda datang"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Jika skor Rp 100.000 dan pajak 10%, berapa pajak yang dibayar?",
+          "choices": [
+            "10.000 Poin",
+            "1.000 Poin",
+            "5.000 Poin"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    "digital": {
+      "nama": "Literasi Digital (Contoh)",
+      "eduText": {
+        "income": "Poin Wawasan bertambah! Kamu membagikan konten positif.",
+        "expense": "Kamu terkena hoax, poin wawasan berkurang. Selalu cek fakta!",
+        "tax": "Kamu Wajib lapor konten negatif ke pihak berwenang.",
+        "save": "Menyimpan bukti digital (screenshot) penting untuk keamanan.",
+        "penalty": "Denda menyebar misinformasi. Poin dikurangi.",
+        "bonus": "Bonus kuis keamanan siber! Jawab untuk poin ekstra.",
+        "start": "START adalah titik awal perjalanan digitalmu."
+      },
+      "tiles": [
+        {
+          "type": "start",
+          "title": "START",
+          "effect": "Lewati START: +10.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Konten Positif",
+          "points": 15000,
+          "effect": "+15.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Kena Hoax",
+          "points": -8000,
+          "effect": "-8.000 Poin"
+        },
+        {
+          "type": "bonus",
+          "title": "Kuis Keamanan",
+          "effect": "Jawab kuis siber!"
+        },
+        {
+          "type": "penalty",
+          "title": "Lupa Log Out",
+          "points": -5000,
+          "effect": "-5.000 Poin"
+        },
+        {
+          "type": "save",
+          "title": "Backup Data",
+          "points": 5000,
+          "effect": "Amankan 5.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Verifikasi Fakta",
+          "points": 10000,
+          "effect": "+10.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Download Ilegal",
+          "points": -7000,
+          "effect": "-7.000 Poin"
+        },
+        {
+          "type": "tax",
+          "title": "Lapor Konten",
+          "percent": 5,
+          "effect": "-5% Poin (Lapor Hoax)"
+        },
+        {
+          "type": "bonus",
+          "title": "Kuis Phishing",
+          "effect": "Jawab kuis phishing!"
+        },
+        {
+          "type": "income",
+          "title": "Buat Password Kuat",
+          "points": 5000,
+          "effect": "+5.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Klik Link Aneh",
+          "points": -10000,
+          "effect": "-10.000 Poin"
+        },
+        {
+          "type": "penalty",
+          "title": "Cyberbullying",
+          "points": -15000,
+          "effect": "-15.000 Poin"
+        },
+        {
+          "type": "save",
+          "title": "Aktifkan 2FA",
+          "points": 5000,
+          "effect": "Amankan 5.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Edukasi Keluarga",
+          "points": 12000,
+          "effect": "+12.000 Poin"
+        },
+        {
+          "type": "bonus",
+          "title": "Kuis Jejak Digital",
+          "effect": "Jawab kuis digital!"
+        },
+        {
+          "type": "expense",
+          "title": "Posting Berlebihan",
+          "points": -6000,
+          "effect": "-6.000 Poin"
+        },
+        {
+          "type": "tax",
+          "title": "Lapor Konten",
+          "percent": 5,
+          "effect": "-5% Poin (Lapor Ujaran Benci)"
+        },
+        {
+          "type": "penalty",
+          "title": "Sebar Data Pribadi",
+          "points": -20000,
+          "effect": "-20.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Menang Lomba Blog",
+          "points": 25000,
+          "effect": "+25.000 Poin"
+        }
+      ],
+      "quizBank": [
+        {
+          "q": "Apa kepanjangan dari 'OTP' dalam keamanan digital?",
+          "choices": [
+            "One Time Password",
+            "Only True Password",
+            "Open The Phone"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Manakah yang merupakan contoh Phishing?",
+          "choices": [
+            "Email resmi dari bank",
+            "Link aneh minta password",
+            "Telepon dari teman"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Apa fungsi dari 2FA (Two-Factor Authentication)?",
+          "choices": [
+            "Mempercepat internet",
+            "Menambah lapisan keamanan",
+            "Membuat password baru"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    "uangSaku": {
+      "nama": "Uang Saku & Pengelolaan Harian",
+      "eduText": {
+        "income": "Kamu mendapatkan uang saku dari orang tua atau hasil usaha kecil.",
+        "expense": "Pengeluaran membuatmu belajar memilih mana yang penting dan mana yang bisa ditunda.",
+        "tax": "Kamu menyisihkan sedikit untuk keperluan bersama seperti kebersihan kelas atau kegiatan sekolah.",
+        "save": "Menabung membantu mewujudkan rencana keuangan kecilmu, seperti membeli buku baru atau alat tulis favorit.",
+        "penalty": "Kamu lupa mengatur uang sehingga harus membayar lebih atau mengganti barang yang hilang.",
+        "bonus": "Bonus pengetahuan! Jawab kuis dengan benar untuk mendapatkan poin tambahan.",
+        "start": "START! Kamu mendapat tambahan poin sebagai semangat awal mengelola uang saku."
+      },
+      "tiles": [
+        {
+          "type": "start",
+          "title": "START",
+          "effect": "Lewati START: +10.000 Poin"
+        },
+        {
+          "type": "income",
+          "title": "Uang saku harian",
+          "points": 20000,
+          "effect": "+20.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Jajan tidak direncanakan",
           "points": -12000,
           "effect": "-12.000 Poin"
         },
         {
           "type": "tax",
-          "title": "Iuran Kelas Bulanan",
+          "title": "Iuran kelas bulanan",
           "percent": 5,
-          "effect": "-5% Poin"
+          "effect": "-5% dari Skor"
         },
         {
           "type": "save",
-          "title": "Menabung Target Kecil",
+          "title": "Menabung target kecil",
           "points": 8000,
           "effect": "Tabung 8.000 Poin"
         },
         {
           "type": "bonus",
           "title": "Bonus Edukasi",
-          "effect": "Jawab kuis!"
+          "effect": "Jawab kuis untuk +15.000 Poin"
         },
         {
           "type": "penalty",
-          "title": "Telat Bayar Uang Kas",
+          "title": "Telat bayar uang kas",
           "points": -7000,
           "effect": "-7.000 Poin"
         },
         {
           "type": "income",
-          "title": "Uang Saku Tambahan",
+          "title": "Uang saku tambahan",
           "points": 15000,
           "effect": "+15.000 Poin"
         },
         {
           "type": "expense",
-          "title": "Beli Alat Tulis",
+          "title": "Beli alat tulis",
           "points": -9000,
           "effect": "-9.000 Poin"
         },
         {
           "type": "save",
-          "title": "Tabungan Mingguan",
+          "title": "Tabungan mingguan",
           "points": 10000,
           "effect": "Tabung 10.000 Poin"
         },
         {
           "type": "tax",
-          "title": "Iuran Kebersihan Sekolah",
+          "title": "Iuran kebersihan sekolah",
           "percent": 5,
-          "effect": "-5% Poin"
+          "effect": "-5% dari Skor"
         },
         {
           "type": "bonus",
           "title": "Bonus Edukasi",
-          "effect": "Jawab kuis!"
+          "effect": "Jawab kuis untuk +15.000 Poin"
         },
         {
           "type": "income",
-          "title": "Uang Saku Mingguan",
+          "title": "Uang saku mingguan",
           "points": 25000,
           "effect": "+25.000 Poin"
         },
         {
           "type": "expense",
-          "title": "Jajan Minuman Manis",
+          "title": "Jajan minuman manis",
           "points": -14000,
           "effect": "-14.000 Poin"
         },
         {
           "type": "penalty",
-          "title": "Denda Kehilangan Barang",
+          "title": "Denda kehilangan barang kelas",
           "points": -10000,
           "effect": "-10.000 Poin"
         },
         {
           "type": "save",
-          "title": "Menabung Kebutuhan Besar",
+          "title": "Menabung untuk kebutuhan besar",
           "points": 15000,
           "effect": "Tabung 15.000 Poin"
         },
         {
           "type": "tax",
-          "title": "Iuran Ekstrakurikuler",
+          "title": "Iuran kegiatan ekstrakurikuler",
           "percent": 7,
-          "effect": "-7% Poin"
+          "effect": "-7% dari Skor"
         },
         {
           "type": "income",
-          "title": "Bantu Orang Tua",
+          "title": "Bantu orang tua di rumah",
           "points": 20000,
           "effect": "+20.000 Poin"
         },
         {
           "type": "expense",
-          "title": "Beli Buku Latihan",
+          "title": "Beli buku latihan",
           "points": -12000,
           "effect": "-12.000 Poin"
         },
         {
           "type": "bonus",
           "title": "Bonus Edukasi",
-          "effect": "Jawab kuis!"
+          "effect": "Jawab kuis untuk +15.000 Poin"
         }
       ],
       "quizLevels": {
         "1": [
           {
-            "q": "Apa manfaat utama mencatat pengeluaran?",
+            "q": "Apa tujuan utama dari menabung uang saku?",
             "choices": [
-              "Agar tahu ke mana uang pergi",
-              "Agar uang bertambah otomatis",
-              "Agar boleh jajan bebas"
+              "Agar bisa membeli hal yang diinginkan nanti",
+              "Agar uang saku bertambah otomatis",
+              "Agar tidak perlu belajar mengatur uang"
             ],
             "correct": 0
           },
           {
-            "q": "Pengeluaran adalah...",
+            "q": "Jika kamu punya 5.000 dan ingin jajan 10.000, apa yang sebaiknya dilakukan?",
             "choices": [
-              "Uang yang diterima",
-              "Uang yang dikeluarkan",
-              "Uang tabungan"
+              "Meminjam uang ke teman",
+              "Menunda jajan sampai cukup",
+              "Tetap jajan dan tidak membayar"
             ],
             "correct": 1
           },
           {
-            "q": "Jika kamu mendapat uang saku, itu termasuk...",
+            "q": "Contoh pemasukan bagi pelajar adalah…",
             "choices": [
-              "Pendapatan",
-              "Pengeluaran",
-              "Denda"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa tujuan menabung?",
-            "choices": [
-              "Supaya boros",
-              "Mempersiapkan kebutuhan",
-              "Hanya ikut-ikutan"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Iuran kelas termasuk jenis apa?",
-            "choices": [
-              "Pendapatan",
-              "Tabungan",
-              "Pajak/Iuran"
-            ],
-            "correct": 2
-          },
-          {
-            "q": "Pengelolaan uang saku melatih...",
-            "choices": [
-              "Disiplin",
-              "Tidur cepat",
-              "Main game"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa yang terjadi jika boros?",
-            "choices": [
-              "Uang cepat habis",
-              "Uang bertambah",
-              "Tidak berpengaruh"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Denda terjadi saat...",
-            "choices": [
-              "Menabung",
-              "Terlambat membayar",
-              "Menerima uang"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Contoh pendapatan untuk pelajar?",
-            "choices": [
-              "Beli buku",
-              "Jajan",
-              "Uang saku"
-            ],
-            "correct": 2
-          },
-          {
-            "q": "Apa yang harus dilakukan jika uang hampir habis?",
-            "choices": [
-              "Tetap boros",
-              "Berhemat",
-              "Pinjam ke semua orang"
-            ],
-            "correct": 1
-          }
-        ],
-        "2": [
-          {
-            "q": "Jika kamu punya 50.000 dan menabung 10.000, sisa uang adalah...",
-            "choices": [
-              "40.000",
-              "30.000",
-              "60.000"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Cara terbaik agar uang saku cukup adalah...",
-            "choices": [
-              "Membuat rencana pengeluaran",
-              "Menghabiskan di awal",
-              "Membeli semua yang disuka"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa akibat sering lupa bayar iuran?",
-            "choices": [
-              "Denda",
-              "Bonus",
-              "Tabungan"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Pengeluaran wajib biasanya bersifat...",
-            "choices": [
-              "Tidak penting",
-              "Harus dibayar rutin",
-              "Untuk hiburan"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Jika pengeluaran lebih besar daripada pendapatan...",
-            "choices": [
-              "Uang akan minus",
-              "Uang jadi banyak",
-              "Tidak terjadi apa-apa"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Menabung rutin membantu...",
-            "choices": [
-              "Menghabiskan lebih banyak",
-              "Mencapai target",
-              "Menambah hutang"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Apa contoh pengeluaran tidak direncanakan?",
-            "choices": [
-              "Jajan tiba-tiba",
-              "Iuran kelas",
-              "Menabung"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Pajak/iuran diperlukan untuk...",
-            "choices": [
-              "Fasilitas bersama",
-              "Foya-foya",
-              "Game online"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Jika ingin membeli barang mahal, harus...",
-            "choices": [
-              "Menabung",
-              "Menghabiskan uang",
-              "Tidak perlu berpikir"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Tabungan sebaiknya digunakan ketika...",
-            "choices": [
-              "Ada kebutuhan penting",
-              "Ingin jajan",
-              "Iseng"
-            ],
-            "correct": 0
-          }
-        ],
-        "3": [
-          {
-            "q": "Jika kamu punya 120.000 dan pajak 5%, berapa potongannya?",
-            "choices": [
-              "6.000",
-              "10.000",
-              "3.000"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa strategi paling efektif agar uang saku cukup 1 minggu?",
-            "choices": [
-              "Rencana harian",
-              "Belanja bebas",
-              "Pinjam terus"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Saat harus memilih barang yang penting, kamu sedang melakukan...",
-            "choices": [
-              "Prioritas",
-              "Boros",
-              "Gaya hidup"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Jika kamu menabung 10.000 tiap hari, berapa tabungan 7 hari?",
-            "choices": [
-              "70.000",
-              "30.000",
-              "10.000"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Penyebab utama keuangan bocor adalah...",
-            "choices": [
-              "Jajan impulsif",
-              "Menabung",
-              "Menerima uang"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Mengatur pengeluaran bertujuan untuk...",
-            "choices": [
-              "Menghindari minus",
-              "Membuat boros",
-              "Membuat hutang"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Contoh pemasukan aktif?",
-            "choices": [
-              "Jual barang bekas",
-              "Jajan",
+              "Membeli jajanan",
+              "Mendapat uang dari orang tua",
               "Membeli buku"
             ],
-            "correct": 0
+            "correct": 1
           },
           {
-            "q": "Jika kamu selalu telat bayar kas, efeknya adalah...",
+            "q": "Apa yang dimaksud pengeluaran?",
             "choices": [
-              "Denda",
-              "Bonus",
-              "Tabungan bertambah"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Mengapa tabungan penting untuk masa depan?",
-            "choices": [
-              "Menghindari kesulitan",
-              "Agar boros",
-              "Agar uang habis"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Jika kamu mendapat 20.000 dan mengeluarkan 12.000, saldo akhir adalah...",
-            "choices": [
-              "8.000",
-              "2.000",
-              "12.000"
-            ],
-            "correct": 0
-          }
-        ]
-      }
-    },
-    "B": {
-      "nama": "Literasi & Etika Digital",
-      "eduText": {
-        "start": "START! Kamu memulai perjalanan etika digital. Jadilah pengguna internet yang bijak!",
-        "income": "Kamu melakukan tindakan positif digital! Tindakan baik menambah poin kepercayaan.",
-        "expense": "Kamu melakukan tindakan kurang bijak. Belajar dari kesalahan itu penting!",
-        "tax": "Kontribusikan energimu untuk membantu lingkungan digital tetap aman.",
-        "save": "Kamu menyimpan kebiasaan positif. Kebiasaan baik membuat reputasimu meningkat.",
-        "penalty": "Perilaku tidak pantas menyebabkan masalah. Hati-hati saat bertindak di dunia digital.",
-        "bonus": "Bonus kuis etika digital! Jawab dengan benar untuk dapat poin tambahan."
-      },
-      "tiles": [
-        {
-          "type": "start",
-          "title": "START",
-          "effect": "Mulai dengan semangat positif!"
-        },
-        {
-          "type": "income",
-          "title": "Memberi Komentar Positif",
-          "points": 15000,
-          "effect": "+15.000 Poin"
-        },
-        {
-          "type": "expense",
-          "title": "Spam Chat Grup",
-          "points": -10000,
-          "effect": "-10.000 Poin"
-        },
-        {
-          "type": "bonus",
-          "title": "Bonus Etika",
-          "effect": "Jawab kuis etika digital"
-        },
-        {
-          "type": "save",
-          "title": "Simpan Kebiasaan Baik",
-          "points": 8000,
-          "effect": "Simpan 8.000 Poin"
-        },
-        {
-          "type": "penalty",
-          "title": "Membalas dengan Emosi",
-          "points": -12000,
-          "effect": "-12.000 Poin"
-        },
-        {
-          "type": "income",
-          "title": "Menghargai Pendapat Teman",
-          "points": 12000,
-          "effect": "+12.000 Poin"
-        },
-        {
-          "type": "tax",
-          "title": "Kontribusi Keamanan Grup",
-          "percent": 5,
-          "effect": "-5% dari Skor"
-        },
-        {
-          "type": "expense",
-          "title": "Menyebar Informasi Tanpa Cek Fakta",
-          "points": -15000,
-          "effect": "-15.000 Poin"
-        },
-        {
-          "type": "save",
-          "title": "Simpan Perilaku Sopan",
-          "points": 10000,
-          "effect": "Simpan 10.000 Poin"
-        },
-        {
-          "type": "bonus",
-          "title": "Bonus Etika Digital",
-          "effect": "Jawab kuis untuk bonus poin"
-        },
-        {
-          "type": "income",
-          "title": "Menggunakan Bahasa Baik",
-          "points": 10000,
-          "effect": "+10.000 Poin"
-        },
-        {
-          "type": "penalty",
-          "title": "Mengabaikan Aturan Grup",
-          "points": -8000,
-          "effect": "-8.000 Poin"
-        },
-        {
-          "type": "income",
-          "title": "Minta Maaf Setelah Salah",
-          "points": 14000,
-          "effect": "+14.000 Poin"
-        },
-        {
-          "type": "expense",
-          "title": "Bercanda Berlebihan",
-          "points": -9000,
-          "effect": "-9.000 Poin"
-        },
-        {
-          "type": "tax",
-          "title": "Kontribusi Harmoni Digital",
-          "percent": 7,
-          "effect": "-7% dari Skor"
-        },
-        {
-          "type": "save",
-          "title": "Catat Perilaku Positif",
-          "points": 7000,
-          "effect": "Simpan 7.000 Poin"
-        },
-        {
-          "type": "bonus",
-          "title": "Kuis Kesadaran Digital",
-          "effect": "Jawab untuk tambahan poin"
-        },
-        {
-          "type": "income",
-          "title": "Menghindari Konflik Online",
-          "points": 16000,
-          "effect": "+16.000 Poin"
-        }
-      ],
-      "quizLevels": {
-        "1": [
-          {
-            "q": "Apa yang harus kamu lakukan sebelum mengirim pesan di grup?",
-            "choices": [
-              "Langsung kirim saja",
-              "Pikir dulu apakah pesanmu sopan",
-              "Kirim spam biar cepat dibaca"
+              "Uang yang kamu terima",
+              "Uang yang kamu keluarkan",
+              "Uang yang disimpan di tabungan"
             ],
             "correct": 1
           },
           {
-            "q": "Bagaimana cara menunjukkan sikap sopan di internet?",
+            "q": "Mengapa penting mencatat pengeluaran?",
             "choices": [
-              "Menggunakan huruf besar semua",
-              "Menggunakan bahasa yang baik",
-              "Mengejek teman"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Jika kamu tidak setuju dengan teman, apa yang harus dilakukan?",
-            "choices": [
-              "Marah-marah",
-              "Menghina balik",
-              "Bicara dengan sopan"
-            ],
-            "correct": 2
-          },
-          {
-            "q": "Apa yang sebaiknya dilakukan saat menerima pesan aneh?",
-            "choices": [
-              "Sebar ke semua grup",
-              "Cek dulu sumbernya",
-              "Abaikan saja"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Mengirim spam artinya...",
-            "choices": [
-              "Mengirim banyak pesan tidak penting",
-              "Mengirim file penting",
-              "Mengirim tugas sekolah"
+              "Agar tahu kemana uangmu pergi",
+              "Agar uang jadi lebih banyak",
+              "Agar bisa jajan lebih banyak"
             ],
             "correct": 0
-          },
-          {
-            "q": "Kapan kamu perlu meminta maaf secara online?",
-            "choices": [
-              "Saat salah bicara atau bersikap kasar",
-              "Saat menang game",
-              "Tidak perlu pernah minta maaf"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa contoh perilaku baik di dunia digital?",
-            "choices": [
-              "Menghina orang",
-              "Memberi komentar positif",
-              "Menyebar rumor"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Chat grup sekolah digunakan untuk...",
-            "choices": [
-              "Tugas dan komunikasi penting",
-              "Spam stiker tiap menit",
-              "Bercanda berlebihan"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa yang harus diperhatikan sebelum memposting sesuatu?",
-            "choices": [
-              "Pastikan lucu",
-              "Pastikan tidak menyakiti orang lain",
-              "Pastikan banyak emote"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Menggunakan huruf BESAR semua dapat dianggap...",
-            "choices": [
-              "Biasa saja",
-              "Seperti sedang berteriak",
-              "Lebih sopan"
-            ],
-            "correct": 1
           }
         ],
         "2": [
           {
-            "q": "Bagaimana cara menghindari konflik saat berdiskusi online?",
+            "q": "Kamu memiliki 20.000. Jika kamu menabung 8.000 dan membeli alat tulis 9.000, berapa sisa uangmu?",
             "choices": [
-              "Tetap tenang dan sopan",
-              "Balas lebih kasar",
-              "Ajak semua orang ribut"
+              "3.000",
+              "4.000",
+              "5.000"
             ],
             "correct": 0
           },
           {
-            "q": "Etika digital berarti...",
+            "q": "Apa keputusan terbaik jika kamu ingin membeli sesuatu yang harganya lebih mahal dari uang saku harianmu?",
             "choices": [
-              "Aturan sopan santun saat berinternet",
-              "Cara mempercepat WiFi",
-              "Kumpulan meme lucu"
+              "Menabung beberapa hari",
+              "Meminjam ke banyak teman",
+              "Meminta uang tambahan tanpa alasan"
             ],
             "correct": 0
           },
           {
-            "q": "Jika melihat teman dipermalukan online, apa tindakan yang baik?",
+            "q": "Jika setiap hari kamu jajan 12.000 dari uang saku 20.000, berapa yang bisa kamu tabung dalam 5 hari?",
             "choices": [
-              "Ikut bercanda",
-              "Mendukung korban dan menghentikan ejekan",
-              "Diam saja"
+              "40.000",
+              "20.000",
+              "10.000"
             ],
             "correct": 1
           },
           {
-            "q": "Apa yang dimaksud ‘jejak digital’?",
+            "q": "Jika kamu sering menghabiskan uang tanpa rencana, apa akibatnya?",
             "choices": [
-              "Langkah kaki robot",
-              "Segala hal yang kamu tinggalkan di internet",
-              "Akun palsu"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Mengapa penting menjaga privasi?",
-            "choices": [
-              "Agar data atau informasi tidak disalahgunakan",
-              "Supaya terkenal",
-              "Supaya mendapat banyak like"
+              "Uang cepat habis",
+              "Uang bertambah cepat",
+              "Bisa menabung lebih banyak"
             ],
             "correct": 0
           },
           {
-            "q": "Apa tindakan yang tepat jika seseorang marah di grup?",
+            "q": "Apa pilihan terbaik ketika memilih untuk jajan atau menabung untuk membeli buku?",
             "choices": [
-              "Balas marah",
-              "Diamkan dan bantu menenangkan",
-              "Hapus grup"
+              "Tetap jajan walapun tidak penting",
+              "Menunda jajan dan menabung",
+              "Tidak menabung sama sekali"
             ],
             "correct": 1
-          },
-          {
-            "q": "Kalau kamu salah mengirim pesan, apa yang sebaiknya dilakukan?",
-            "choices": [
-              "Pura-pura tidak tahu",
-              "Minta maaf dan klarifikasi",
-              "Menuduh orang lain"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Tanda pesan kurang sopan biasanya...",
-            "choices": [
-              "Tidak jelas maksudnya",
-              "Berisi kata kasar atau merendahkan",
-              "Ada emoji tersenyum"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Mengapa tidak boleh menyebarkan rumor?",
-            "choices": [
-              "Karena bisa menyakiti orang",
-              "Karena tidak seru",
-              "Karena butuh pulsa"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa contoh kontribusi positif dalam komunitas digital?",
-            "choices": [
-              "Membantu menjawab pertanyaan",
-              "Menghina admin",
-              "Menghilang tiba-tiba"
-            ],
-            "correct": 0
           }
         ],
         "3": [
           {
-            "q": "Mengapa batasan etika digital penting meski kita tidak berhadapan langsung?",
+            "q": "Kamu ingin membeli buku harga 45.000. Jika uang saku mingguanmu 25.000 dan kamu menabung 60% tiap minggu, berapa minggu sampai cukup?",
             "choices": [
-              "Karena orang mudah tersinggung",
-              "Karena interaksi digital tetap berdampak nyata",
-              "Karena admin marah"
+              "3 minggu",
+              "2 minggu",
+              "4 minggu"
             ],
             "correct": 1
           },
           {
-            "q": "Apa langkah terbaik menghadapi provokasi online?",
+            "q": "Jika kamu mendapat uang 30.000, menabung 10.000, lalu terkena denda 5.000, berapa uangmu sekarang?",
             "choices": [
-              "Tidak terlibat dan tetap rasional",
-              "Balas agar tidak dianggap lemah",
-              "Sebarkan provokasi itu"
+              "15.000",
+              "20.000",
+              "25.000"
+            ],
+            "correct": 1
+          },
+          {
+            "q": "Mana kebiasaan yang paling membantu mengatur uang saku jangka panjang?",
+            "choices": [
+              "Selalu mencatat pemasukan dan pengeluaran",
+              "Jajan tanpa memperhatikan harga",
+              "Menabung hanya kalau ingat"
             ],
             "correct": 0
           },
           {
-            "q": "Mengapa debat sehat penting dalam ruang digital?",
+            "q": "Jika kamu ingin membeli barang 100.000 dalam 1 bulan dan uang sakumu 30.000 per minggu, berapa yang harus ditabung tiap minggu?",
             "choices": [
-              "Untuk belajar menghargai sudut pandang orang lain",
-              "Untuk mencari musuh",
-              "Untuk membuktikan diri paling benar"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa dampak jangka panjang dari berbicara kasar online?",
-            "choices": [
-              "Tidak ada dampak",
-              "Merusak reputasi dan hubungan sosial",
-              "Mendapat lebih banyak followers"
+              "20.000",
+              "25.000",
+              "30.000"
             ],
             "correct": 1
           },
           {
-            "q": "Saat seseorang meminta privasi dihormati, apa sikap yang benar?",
+            "q": "Kamu memiliki 50.000. Kamu ingin membeli mainan 40.000 dan juga perlu membeli buku 20.000. Apa keputusan terbaik?",
             "choices": [
-              "Mengabaikan",
-              "Menghormati batasannya",
-              "Membocorkan informasinya"
+              "Membeli mainan saja",
+              "Membeli buku terlebih dahulu",
+              "Tidak membeli apapun dan menabung semuanya"
             ],
             "correct": 1
-          },
-          {
-            "q": "Mengapa penting memahami konteks sebelum mengomentari?",
-            "choices": [
-              "Supaya tidak salah paham",
-              "Supaya terlihat pintar",
-              "Supaya bisa mengejek lebih tepat"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Tindakan terbaik saat menerima kritik online adalah...",
-            "choices": [
-              "Belajar dan evaluasi",
-              "Serang balik",
-              "Ajak berkelahi"
-            ],
-            "correct": 0
-          },
-          {
-            "q": "Apa peran empati dalam etika digital?",
-            "choices": [
-              "Tidak penting",
-              "Membantu kita mempertimbangkan perasaan orang lain",
-              "Untuk menang debat"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Mengapa menyebar screenshot percakapan tanpa izin itu tidak etis?",
-            "choices": [
-              "Karena bisa menghilangkan memori HP",
-              "Karena melanggar privasi seseorang",
-              "Karena tidak lucu"
-            ],
-            "correct": 1
-          },
-          {
-            "q": "Tindakan terbaik ketika menyaksikan pelecehan online adalah...",
-            "choices": [
-              "Diam saja",
-              "Ikut mengejek",
-              "Melaporkan dan mendukung korban"
-            ],
-            "correct": 2
           }
         ]
-      },
-      "C": {
-        "nama": "Etika & Adab Campuran",
-        "eduText": {
-          "income": "Kamu melakukan tindakan baik, seperti membantu teman atau bersikap sopan.",
-          "expense": "Kurangnya etika kadang berakibat buruk, kamu belajar memperbaiki diri.",
-          "tax": "Kamu ikut berkontribusi menjaga kenyamanan dan kebersihan lingkungan bersama.",
-          "save": "Menjaga sikap baik secara konsisten akan membantumu menjadi pribadi yang disukai.",
-          "penalty": "Perilaku buruk membawa konsekuensi, tapi kamu bisa belajar dari kesalahan.",
-          "bonus": "Bonus adab! Jawab kuis tentang etika & sopan santun untuk mendapat poin.",
-          "start": "START! Awali perjalananmu dengan sikap sopan dan bertanggung jawab."
-        },
-        "tiles": [
-          {
-            "type": "start",
-            "title": "START",
-            "effect": "Lewati START: +10.000 Poin"
-          },
-          {
-            "type": "income",
-            "title": "Membantu teman",
-            "points": 15000,
-            "effect": "+15.000 Poin"
-          },
-          {
-            "type": "expense",
-            "title": "Berbicara kasar",
-            "points": -12000,
-            "effect": "-12.000 Poin"
-          },
-          {
-            "type": "bonus",
-            "title": "Bonus Etika",
-            "effect": "Jawab kuis untuk poin tambahan"
-          },
-          {
-            "type": "income",
-            "title": "Mengucapkan salam",
-            "points": 10000,
-            "effect": "+10.000 Poin"
-          },
-          {
-            "type": "penalty",
-            "title": "Tidak disiplin",
-            "points": -8000,
-            "effect": "-8.000 Poin"
-          },
-          {
-            "type": "tax",
-            "title": "Iuran kebersihan",
-            "percent": 5,
-            "effect": "-5% dari Skor"
-          },
-          {
-            "type": "save",
-            "title": "Menahan emosi",
-            "points": 7000,
-            "effect": "Tabung 7.000 Poin"
-          },
-          {
-            "type": "expense",
-            "title": "Tidak mendengarkan guru",
-            "points": -10000,
-            "effect": "-10.000 Poin"
-          },
-          {
-            "type": "income",
-            "title": "Menghormati orang tua",
-            "points": 18000,
-            "effect": "+18.000 Poin"
-          },
-          {
-            "type": "bonus",
-            "title": "Bonus Etika",
-            "effect": "Jawab kuis untuk poin tambahan"
-          },
-          {
-            "type": "expense",
-            "title": "Mengejek teman",
-            "points": -9000,
-            "effect": "-9.000 Poin"
-          },
-          {
-            "type": "income",
-            "title": "Antri dengan tertib",
-            "points": 12000,
-            "effect": "+12.000 Poin"
-          },
-          {
-            "type": "penalty",
-            "title": "Berkelahi",
-            "points": -15000,
-            "effect": "-15.000 Poin"
-          },
-          {
-            "type": "tax",
-            "title": "Iuran peraturan sekolah",
-            "percent": 7,
-            "effect": "-7% dari Skor"
-          },
-          {
-            "type": "save",
-            "title": "Mengendalikan ucapan",
-            "points": 9000,
-            "effect": "Tabung 9.000 Poin"
-          },
-          {
-            "type": "income",
-            "title": "Meminta maaf",
-            "points": 15000,
-            "effect": "+15.000 Poin"
-          },
-          {
-            "type": "expense",
-            "title": "Melanggar tata tertib",
-            "points": -11000,
-            "effect": "-11.000 Poin"
-          },
-          {
-            "type": "bonus",
-            "title": "Bonus Etika",
-            "effect": "Jawab kuis untuk poin tambahan"
-          }
-        ],
-        "quizLevels": {
-          "1": [
-            {
-              "q": "Apa yang sebaiknya kamu lakukan ketika bertemu guru?",
-              "choices": [
-                "Diam dan pergi",
-                "Menyapa dengan sopan",
-                "Tidak peduli"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa arti meminta maaf?",
-              "choices": [
-                "Menghindari masalah",
-                "Mengakui kesalahan",
-                "Menyalahkan orang lain"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Bagaimana sikap yang baik saat orang lain berbicara?",
-              "choices": [
-                "Memotong pembicaraan",
-                "Tidak mendengar",
-                "Mendengarkan dengan sopan"
-              ],
-              "correct": 2
-            },
-            {
-              "q": "Apa yang harus kamu lakukan ketika meminjam barang teman?",
-              "choices": [
-                "Tidak mengembalikan",
-                "Mengembalikan tepat waktu",
-                "Memberikan barang lain"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Bagaimana cara menunjukkan rasa terima kasih?",
-              "choices": [
-                "Diam saja",
-                "Mengucapkan ‘terima kasih’",
-                "Marah"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa sikap yang baik saat guru menjelaskan?",
-              "choices": [
-                "Bermain HP",
-                "Fokus memperhatikan",
-                "Ngobrol"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa yang tidak boleh dilakukan kepada teman?",
-              "choices": [
-                "Mengejek",
-                "Menyapa",
-                "Mengajak bermain"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Kenapa harus disiplin waktu?",
-              "choices": [
-                "Agar dihukum",
-                "Agar kegiatan berjalan lancar",
-                "Agar bisa pulang cepat"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa sikap yang sopan saat bertanya?",
-              "choices": [
-                "Berteriak",
-                "Mengucapkan dengan lembut",
-                "Mengabaikan"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa manfaat antri?",
-              "choices": [
-                "Membuat orang marah",
-                "Membuat kacau",
-                "Menjaga ketertiban"
-              ],
-              "correct": 2
-            }
-          ],
-          "2": [
-            {
-              "q": "Mengapa tidak sopan memotong pembicaraan orang lain?",
-              "choices": [
-                "Menghemat waktu",
-                "Mengabaikan rasa hormat",
-                "Membuat orang senang"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa manfaat menjaga kebersihan kelas?",
-              "choices": [
-                "Agar nyaman untuk semua",
-                "Agar terlihat kaya",
-                "Agar bisa tidur di kelas"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Apa contoh etika digital yang baik?",
-              "choices": [
-                "Mengirim spam",
-                "Menghina di medsos",
-                "Menulis komentar sopan"
-              ],
-              "correct": 2
-            },
-            {
-              "q": "Jika teman salah, apa yang sebaiknya dilakukan?",
-              "choices": [
-                "Menertawakan",
-                "Mengoreksi dengan baik",
-                "Mengejek"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Mengapa berkata jujur itu penting?",
-              "choices": [
-                "Agar dipercaya",
-                "Agar terlihat lucu",
-                "Agar populer"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Saat mendapat pesan mencurigakan, apa yang kamu lakukan?",
-              "choices": [
-                "Sembarang klik",
-                "Abaikan atau laporkan",
-                "Sebarkan"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa bentuk empati?",
-              "choices": [
-                "Membantu teman yang sedih",
-                "Menambah masalah",
-                "Pergi"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Mengapa harus berbicara dengan sopan?",
-              "choices": [
-                "Agar dapat nilai",
-                "Agar dihormati",
-                "Agar terlihat sombong"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa tindakan yang baik saat terjadi konflik?",
-              "choices": [
-                "Memukul",
-                "Menyelesaikan dengan diskusi",
-                "Pergi tanpa bicara"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa sikap yang benar ketika menerima kritik?",
-              "choices": [
-                "Marah",
-                "Menerima dengan lapang dada",
-                "Menghina balik"
-              ],
-              "correct": 1
-            }
-          ],
-          "3": [
-            {
-              "q": "Apa dampak jangka panjang dari selalu bersikap tidak sopan?",
-              "choices": [
-                "Banyak teman dekat",
-                "Dijauhi orang",
-                "Lebih disukai guru"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Bagaimana menyampaikan pendapat yang berbeda?",
-              "choices": [
-                "Dengan menyerang pribadi",
-                "Dengan sopan dan jelas",
-                "Dengan berteriak"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Mengapa penting menjaga etika di dunia digital?",
-              "choices": [
-                "Jejak digital bisa berdampak besar",
-                "Tidak ada yang peduli",
-                "Agar tambah followers"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Apa contoh tanggung jawab di sekolah?",
-              "choices": [
-                "Mengabaikan tugas piket",
-                "Menyelesaikan tugas dengan baik",
-                "Membiarkan sampah berserakan"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Apa manfaat meminta maaf lebih dulu?",
-              "choices": [
-                "Dibenci",
-                "Menyelesaikan konflik",
-                "Membuat masalah baru"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Jika melihat teman dibully, apa tindakan tepat?",
-              "choices": [
-                "Ikut membully",
-                "Diam saja",
-                "Membantu atau melapor"
-              ],
-              "correct": 2
-            },
-            {
-              "q": "Apa bentuk tanggung jawab di media sosial?",
-              "choices": [
-                "Menyebar hoax",
-                "Mengunggah hal positif",
-                "Menghina orang"
-              ],
-              "correct": 1
-            },
-            {
-              "q": "Bagaimana membangun reputasi baik?",
-              "choices": [
-                "Bersikap baik secara konsisten",
-                "Berbuat seenaknya",
-                "Memfitnah orang lain"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Mengapa pengendalian emosi itu penting?",
-              "choices": [
-                "Mencegah konflik",
-                "Membuat masalah",
-                "Agar bisa berteriak"
-              ],
-              "correct": 0
-            },
-            {
-              "q": "Kenapa kita harus menghargai perbedaan?",
-              "choices": [
-                "Karena semua orang harus sama",
-                "Agar tidak ada konflik",
-                "Karena keberagaman itu normal"
-              ],
-              "correct": 2
-            }
-          ]
-        },
-        "D": {
-          "nama": "Kewirausahaan Dasar",
-          "eduText": {
-            "income": "Pendapatan dari hasil usaha mengajarkan bahwa kerja keras dan kreativitas dapat menghasilkan keuntungan.",
-            "expense": "Pengeluaran adalah bagian penting dalam bisnis. Belajar mengatur modal membantu usaha tetap bertahan.",
-            "tax": "Setiap usaha harus membayar pajak untuk mendukung fasilitas dan infrastruktur umum.",
-            "save": "Menyisihkan sebagian keuntungan dapat menjadi modal pengembangan usaha di masa depan.",
-            "penalty": "Kerugian muncul karena kesalahan dalam mengatur usaha. Dari sini kita belajar memperbaiki strategi.",
-            "bonus": "Jawab kuis wirausaha! Setiap jawaban benar meningkatkan pengetahuan bisnis.",
-            "start": "START! Awal perjalananmu dalam membangun usaha yang sukses."
-          },
-          "tiles": [
-            {
-              "type": "start",
-              "title": "START",
-              "effect": "Lewati START: +10.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Jual Minuman Segar",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Beli Bahan Baku",
-              "points": -8000,
-              "effect": "-8.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "+Bonus jika benar"
-            },
-            {
-              "type": "penalty",
-              "title": "Produk Rusak",
-              "points": -6000,
-              "effect": "-6.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Jual Snack",
-              "points": 12000,
-              "effect": "+12.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Pajak UMKM",
-              "percent": 5,
-              "effect": "-5% dari Skor"
-            },
-            {
-              "type": "save",
-              "title": "Tabung Modal Usaha",
-              "points": 7000,
-              "effect": "Tabung 7.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Promosi Usaha",
-              "points": -9000,
-              "effect": "-9.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis!"
-            },
-            {
-              "type": "income",
-              "title": "Pesanan Besar",
-              "points": 20000,
-              "effect": "+20.000 Poin"
-            },
-            {
-              "type": "penalty",
-              "title": "Komplain Pelanggan",
-              "points": -5000,
-              "effect": "-5.000 Poin"
-            },
-            {
-              "type": "save",
-              "title": "Tabungan Pengembangan",
-              "points": 10000,
-              "effect": "Tabung 10.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Biaya Pengemasan",
-              "points": -7000,
-              "effect": "-7.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Jual Produk Baru",
-              "points": 18000,
-              "effect": "+18.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Pajak Penjualan",
-              "percent": 7,
-              "effect": "-7% dari Skor"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis!"
-            },
-            {
-              "type": "expense",
-              "title": "Biaya Sewa Tempat",
-              "points": -12000,
-              "effect": "-12.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Keuntungan Mingguan",
-              "points": 17000,
-              "effect": "+17.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis!"
-            }
-          ],
-          "quizLevels": {
-            "1": [
-              {
-                "q": "Apa itu wirausaha?",
-                "choices": [
-                  "Orang yang bekerja di kantor",
-                  "Orang yang membuat dan menjalankan usaha",
-                  "Orang yang hobi berbelanja"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa promosi penting?",
-                "choices": [
-                  "Agar pelanggan tahu produk",
-                  "Agar harga naik",
-                  "Agar usaha tutup"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Modal adalah...",
-                "choices": [
-                  "Uang atau barang untuk memulai usaha",
-                  "Biaya jajan",
-                  "Bonus game"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Keuntungan diperoleh dari...",
-                "choices": [
-                  "Penjualan lebih besar dari biaya",
-                  "Biaya lebih besar dari penjualan",
-                  "Tidak menjual apapun"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa contoh usaha kecil?",
-                "choices": [
-                  "Toko online kecil",
-                  "Supermarket besar",
-                  "Pabrik mobil"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Menabung dalam usaha bertujuan untuk...",
-                "choices": [
-                  "Beli game",
-                  "Pengembangan usaha",
-                  "Menghabiskan uang"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Resiko dalam usaha artinya...",
-                "choices": [
-                  "Pasti untung",
-                  "Mungkin rugi",
-                  "Tidak ada perubahan"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Strategi usaha adalah...",
-                "choices": [
-                  "Cara agar usaha berjalan sukses",
-                  "Nama merek",
-                  "Jenis makanan"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa fungsi kemasan produk?",
-                "choices": [
-                  "Melindungi produk & menarik pembeli",
-                  "Hanya untuk gaya",
-                  "Tidak berguna"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Siapa pelanggan?",
-                "choices": [
-                  "Orang yang membeli produk",
-                  "Orang yang tidak pernah membeli",
-                  "Orang yang lewat saja"
-                ],
-                "correct": 1
-              }
-            ],
-            "2": [
-              {
-                "q": "Apa tujuan mencari supplier yang baik?",
-                "choices": [
-                  "Harga stabil & kualitas terjamin",
-                  "Agar rugi",
-                  "Agar barang selalu rusak"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa fungsi laporan keuangan sederhana?",
-                "choices": [
-                  "Melacak pemasukan dan pengeluaran",
-                  "Untuk dekorasi",
-                  "Untuk permainan"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Kenapa penting memahami target pasar?",
-                "choices": [
-                  "Agar tahu siapa yang membeli",
-                  "Agar usaha berhenti",
-                  "Agar harga tidak jelas"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Break even point adalah...",
-                "choices": [
-                  "Titik balik rugi jadi untung",
-                  "Hari libur",
-                  "Nama toko"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa inovasi produk dibutuhkan?",
-                "choices": [
-                  "Agar usaha menarik & tidak bosan",
-                  "Agar pelanggan kabur",
-                  "Agar stok mati"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa dampak pelayanan yang buruk?",
-                "choices": [
-                  "Pelanggan pergi",
-                  "Penjualan naik",
-                  "Harga otomatis naik"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Harga jual sebaiknya ditentukan berdasarkan...",
-                "choices": [
-                  "Biaya + keuntungan",
-                  "Tebakan",
-                  "Ikut-ikutan tanpa hitung"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa manfaat promosi online?",
-                "choices": [
-                  "Jangkauan luas",
-                  "Tidak ada yang lihat",
-                  "Justru rugi"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa wirausaha perlu perencanaan?",
-                "choices": [
-                  "Mengurangi resiko",
-                  "Biar bingung",
-                  "Supaya tidak tahu arah usaha"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa itu kualitas produk?",
-                "choices": [
-                  "Standar baik buruknya produk",
-                  "Nama produk",
-                  "Warna kemasan"
-                ],
-                "correct": 0
-              }
-            ],
-            "3": [
-              {
-                "q": "Apa itu analisis SWOT?",
-                "choices": [
-                  "Menilai kekuatan, kelemahan, peluang, ancaman",
-                  "Jenis kemasan",
-                  "Cara menghitung pajak"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa riset kompetitor penting?",
-                "choices": [
-                  "Agar tahu cara bersaing",
-                  "Agar berhenti usaha",
-                  "Agar rugi lebih besar"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Branding membantu usaha untuk...",
-                "choices": [
-                  "Membangun identitas & kepercayaan",
-                  "Menaikkan biaya",
-                  "Mengurangi pelanggan"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Diversifikasi produk artinya...",
-                "choices": [
-                  "Menambah variasi produk",
-                  "Mengurangi semua produk",
-                  "Menutup usaha"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa itu margin keuntungan?",
-                "choices": [
-                  "Selisih harga pokok dan harga jual",
-                  "Jumlah pelanggan",
-                  "Biaya sewa"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa penting memahami perilaku konsumen?",
-                "choices": [
-                  "Agar produk sesuai kebutuhan",
-                  "Agar produk tidak laku",
-                  "Agar usaha berhenti"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa manfaat evaluasi mingguan usaha?",
-                "choices": [
-                  "Melihat apa yang harus ditingkatkan",
-                  "Buang waktu",
-                  "Tidak ada manfaat"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa itu cashflow?",
-                "choices": [
-                  "Arus keluar-masuk uang usaha",
-                  "Jumlah karyawan",
-                  "Jenis kemasan"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa stok harus dikelola baik?",
-                "choices": [
-                  "Agar barang tidak habis atau menumpuk",
-                  "Agar rugi",
-                  "Agar pelanggan marah"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa tujuan membuat rencana ekspansi usaha?",
-                "choices": [
-                  "Mengembangkan bisnis lebih besar",
-                  "Menutup usaha",
-                  "Mengurangi pelanggan"
-                ],
-                "correct": 0
-              }
-            ]
-          }
-        },
-        "E": {
-          "nama": "Gaya Hidup Sehat",
-          "eduText": {
-            "income": "Kamu mendapatkan poin dari kebiasaan hidup sehat seperti olahraga atau makan bergizi.",
-            "expense": "Pengeluaran terjadi saat kamu melakukan kebiasaan kurang sehat yang berdampak pada energi dan fokus.",
-            "tax": "Sebagian energi kamu dipakai untuk aktivitas rutin harian. Ini wajar dan perlu dikelola.",
-            "save": "Menyimpan energi atau waktu untuk beristirahat membuat tubuh tetap bugar.",
-            "penalty": "Kurang istirahat, stres, atau makan sembarangan membuatmu kehilangan poin.",
-            "bonus": "Bonus kuis tentang hidup sehat! Jawab dengan benar untuk poin tambahan.",
-            "start": "START! Awali harimu dengan semangat dan pola hidup sehat!"
-          },
-          "tiles": [
-            {
-              "type": "start",
-              "title": "START",
-              "effect": "Lewati START: +10.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Sarapan Sehat",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Begadang",
-              "points": -12000,
-              "effect": "-12.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Olahraga Pagi",
-              "points": 20000,
-              "effect": "+20.000 Poin"
-            },
-            {
-              "type": "penalty",
-              "title": "Tidak Minum Air",
-              "points": -8000,
-              "effect": "-8.000 Poin"
-            },
-            {
-              "type": "save",
-              "title": "Istirahat Cukup",
-              "points": 10000,
-              "effect": "Tabung 10.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis hidup sehat!"
-            },
-            {
-              "type": "expense",
-              "title": "Terlalu Lama Main HP",
-              "points": -10000,
-              "effect": "-10.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Makan Buah",
-              "points": 12000,
-              "effect": "+12.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Aktivitas Harian",
-              "percent": 5,
-              "effect": "-5% dari Skor"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis hidup sehat!"
-            },
-            {
-              "type": "income",
-              "title": "Minum Air Putih",
-              "points": 10000,
-              "effect": "+10.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Terlalu Banyak Gula",
-              "points": -11000,
-              "effect": "-11.000 Poin"
-            },
-            {
-              "type": "penalty",
-              "title": "Tidak Pemanasan",
-              "points": -7000,
-              "effect": "-7.000 Poin"
-            },
-            {
-              "type": "save",
-              "title": "Meditasi",
-              "points": 8000,
-              "effect": "Tabung 8.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Kelelahan Harian",
-              "percent": 7,
-              "effect": "-7% dari Skor"
-            },
-            {
-              "type": "income",
-              "title": "Jalan Santai",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Makan Cepat Saji",
-              "points": -15000,
-              "effect": "-15.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Edukasi",
-              "effect": "Jawab kuis hidup sehat!"
-            }
-          ],
-          "quizLevels": {
-            "1": [
-              {
-                "q": "Berapa gelas air yang ideal diminum setiap hari?",
-                "choices": [
-                  "1-2 Gelas",
-                  "6-8 Gelas",
-                  "15 Gelas"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Manakah pilihan sarapan yang paling sehat?",
-                "choices": [
-                  "Teh manis & gorengan",
-                  "Roti, telur, buah",
-                  "Keripik & soda"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa manfaat olahraga ringan setiap hari?",
-                "choices": [
-                  "Membuat cepat lapar",
-                  "Menjaga tubuh bugar",
-                  "Membuat cepat mengantuk"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa akibat kurang tidur?",
-                "choices": [
-                  "Tubuh semakin kuat",
-                  "Mudah lelah & sulit fokus",
-                  "Skor langsung naik"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Buah-buahan mengandung…",
-                "choices": [
-                  "Gula berbahaya",
-                  "Vitamin & serat",
-                  "Bahan pengawet"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Minuman manis jika diminum berlebihan menyebabkan…",
-                "choices": [
-                  "Lebih sehat",
-                  "Masalah gigi & energi menurun",
-                  "Tidur lebih nyenyak"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa manfaat stretching?",
-                "choices": [
-                  "Mengurangi cedera",
-                  "Menambah berat badan",
-                  "Meningkatkan stres"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Makan sayur penting karena mengandung…",
-                "choices": [
-                  "Plastik",
-                  "Vitamin",
-                  "Garam"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Berapa lama durasi tidur yang baik untuk pelajar?",
-                "choices": [
-                  "2-3 jam",
-                  "5 jam",
-                  "8-9 jam"
-                ],
-                "correct": 2
-              },
-              {
-                "q": "Kebiasaan sehat sebelum tidur adalah…",
-                "choices": [
-                  "Main HP 2 jam",
-                  "Minum kopi",
-                  "Mematikan layar & santai"
-                ],
-                "correct": 2
-              }
-            ],
-            "2": [
-              {
-                "q": "Protein diperlukan tubuh untuk…",
-                "choices": [
-                  "Energi jangka panjang",
-                  "Membangun otot",
-                  "Menghilangkan ngantuk"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa efek kurang minum air?",
-                "choices": [
-                  "Kekuatan meningkat",
-                  "Dehidrasi & sakit kepala",
-                  "Menambah fokus"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Olahraga paling efektif dilakukan pada…",
-                "choices": [
-                  "Setelah begadang",
-                  "Saat tubuh bugar",
-                  "Saat perut kosong 24 jam"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa manfaat konsumsi serat?",
-                "choices": [
-                  "Mempercepat lapar",
-                  "Baik untuk pencernaan",
-                  "Mengurangi fokus"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Istirahat sebentar setiap 1 jam belajar berfungsi untuk…",
-                "choices": [
-                  "Refresh otak",
-                  "Meningkatkan kebosanan",
-                  "Menurunkan semangat"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa tanda tubuh terlalu banyak gula?",
-                "choices": [
-                  "Energi stabil",
-                  "Mudah lelah",
-                  "Lebih kuat"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Porsi sayur yang baik dalam piring sehat adalah…",
-                "choices": [
-                  "Setengah piring",
-                  "1 sendok",
-                  "Tidak perlu"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa duduk terlalu lama tidak baik?",
-                "choices": [
-                  "Mengurangi kelenturan tubuh",
-                  "Meningkatkan kesehatan",
-                  "Membakar kalori"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Kapan waktu terbaik minum air?",
-                "choices": [
-                  "Saat sudah sangat haus",
-                  "Sepanjang hari sedikit demi sedikit",
-                  "Saat main game"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Makanan olahan terlalu sering berdampak pada…",
-                "choices": [
-                  "Pencernaan buruk",
-                  "Makin sehat",
-                  "Tidur makin nyenyak"
-                ],
-                "correct": 0
-              }
-            ],
-            "3": [
-              {
-                "q": "Apa manfaat lemak sehat (healthy fat)?",
-                "choices": [
-                  "Merusak tubuh",
-                  "Baik untuk otak & hormon",
-                  "Tidak ada manfaat"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa tanda kekurangan nutrisi?",
-                "choices": [
-                  "Energi stabil",
-                  "Mudah lelah & pucat",
-                  "Selalu ceria"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Berapa minggu ideal untuk membiasakan kebiasaan sehat baru?",
-                "choices": [
-                  "1 hari",
-                  "3 minggu",
-                  "1 tahun"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa akibat sering melewatkan sarapan?",
-                "choices": [
-                  "Lebih fokus",
-                  "Energi menurun",
-                  "Otot membesar"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Bagaimana tanda tubuh kekurangan air?",
-                "choices": [
-                  "Mulut kering",
-                  "Energi meningkat",
-                  "Kulit bersinar"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengurangi stres bisa dilakukan dengan…",
-                "choices": [
-                  "Berteriak ke orang",
-                  "Meditasi & olahraga",
-                  "Main HP terus"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa tidur cukup mendukung kesehatan otak?",
-                "choices": [
-                  "Agar makin malas",
-                  "Otak memperbaiki diri saat tidur",
-                  "Agar tidak lapar"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa makanan tinggi serat penting untuk pelajar?",
-                "choices": [
-                  "Membuat ngantuk",
-                  "Menjaga fokus & pencernaan",
-                  "Membuat stres"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa efek terlalu sering minum minuman energi?",
-                "choices": [
-                  "Kesehatan jantung memburuk",
-                  "Lebih sehat",
-                  "Makin kuat"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Tubuh membutuhkan istirahat karena…",
-                "choices": [
-                  "Untuk memulihkan sel-sel tubuh",
-                  "Agar cepat lapar",
-                  "Untuk membuat tidur berlebihan"
-                ],
-                "correct": 0
-              }
-            ]
-          }
-        },
-        "F": {
-          "nama": "Keselamatan & Kesehatan Digital",
-          "eduText": {
-            "income": "Kamu melakukan aktivitas digital yang sehat dan aman.",
-            "expense": "Kamu melakukan aktivitas berisiko atau kurang sehat secara digital.",
-            "tax": "Kamu mengikuti aturan dan kebijakan digital demi keamanan bersama.",
-            "save": "Kamu menyimpan data dan kebiasaan digital yang sehat.",
-            "penalty": "Kamu terkena konsekuensi dari tindakan digital yang tidak aman.",
-            "bonus": "Bonus! Jawab kuis tentang keamanan dan kesehatan digital.",
-            "start": "START! Awal perjalanan digital sehat dan aman."
-          },
-          "tiles": [
-            {
-              "type": "start",
-              "title": "START",
-              "effect": "Lewati START: +10.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Screen Time Sehat",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Main Gadget Terlalu Lama",
-              "points": -12000,
-              "effect": "-12.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Keamanan",
-              "effect": "Jawab kuis keamanan digital!"
-            },
-            {
-              "type": "income",
-              "title": "Istirahat Mata",
-              "points": 10000,
-              "effect": "+10.000 Poin"
-            },
-            {
-              "type": "penalty",
-              "title": "Klik Link Mencurigakan",
-              "points": -15000,
-              "effect": "-15.000 Poin"
-            },
-            {
-              "type": "save",
-              "title": "Backup Data",
-              "points": 8000,
-              "effect": "Simpan 8.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Posting Berlebihan",
-              "points": -9000,
-              "effect": "-9.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Belajar Etika Digital",
-              "points": 12000,
-              "effect": "+12.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Aturan Privasi",
-              "percent": 5,
-              "effect": "-5% dari Skor"
-            },
-            {
-              "type": "income",
-              "title": "Buat Password Kuat",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Sebar Informasi Tanpa Cek",
-              "points": -8000,
-              "effect": "-8.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Literasi Digital",
-              "effect": "Jawab kuis literasi digital!"
-            },
-            {
-              "type": "save",
-              "title": "Mode Fokus",
-              "points": 7000,
-              "effect": "Simpan 7.000 Poin"
-            },
-            {
-              "type": "penalty",
-              "title": "Berbagi Data Pribadi",
-              "points": -15000,
-              "effect": "-15.000 Poin"
-            },
-            {
-              "type": "income",
-              "title": "Menghindari Hoaks",
-              "points": 11000,
-              "effect": "+11.000 Poin"
-            },
-            {
-              "type": "expense",
-              "title": "Gadget Sampai Malam",
-              "points": -10000,
-              "effect": "-10.000 Poin"
-            },
-            {
-              "type": "tax",
-              "title": "Etika Komunitas Online",
-              "percent": 7,
-              "effect": "-7% dari Skor"
-            },
-            {
-              "type": "income",
-              "title": "Mengatur Jadwal Belajar",
-              "points": 15000,
-              "effect": "+15.000 Poin"
-            },
-            {
-              "type": "bonus",
-              "title": "Bonus Kesehatan Digital",
-              "effect": "Jawab kuis digital wellbeing!"
-            }
-          ],
-          "quizLevels": {
-            "1": [
-              {
-                "q": "Apa itu 'screen time'?",
-                "choices": [
-                  "Waktu memakai layar",
-                  "Waktu olahraga",
-                  "Jam tidur"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa yang harus dilakukan jika mata lelah saat main gadget?",
-                "choices": [
-                  "Lanjut terus",
-                  "Istirahat sejenak",
-                  "Tambah kecerahan"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa contoh password yang kuat?",
-                "choices": [
-                  "123456",
-                  "Namaku123",
-                  "Kombinasi huruf, angka, simbol"
-                ],
-                "correct": 2
-              },
-              {
-                "q": "Apa itu hoaks?",
-                "choices": [
-                  "Berita palsu",
-                  "Berita resmi",
-                  "Iklan"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa yang harus dicek sebelum klik link?",
-                "choices": [
-                  "Warnanya",
-                  "Sumbernya",
-                  "Jumlah kata"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa arti 'privasi'?",
-                "choices": [
-                  "Data pribadi",
-                  "Tempat umum",
-                  "Folder musik"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa yang harus dilakukan sebelum posting sesuatu?",
-                "choices": [
-                  "Posting saja",
-                  "Cek apakah aman & sopan",
-                  "Tanya teman"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa bahaya bermain gadget terlalu lama?",
-                "choices": [
-                  "Capek mata",
-                  "Tambah pintar",
-                  "Tambah kuota"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa yang tidak boleh dibagikan?",
-                "choices": [
-                  "Foto liburan",
-                  "Nomor rumah",
-                  "Makanan favorit"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa manfaat mode fokus?",
-                "choices": [
-                  "Agar konsentrasi",
-                  "Agar spam banyak",
-                  "Agar baterai habis"
-                ],
-                "correct": 0
-              }
-            ],
-            "2": [
-              {
-                "q": "Apa ciri link phishing?",
-                "choices": [
-                  "Hadiah gratis tidak jelas",
-                  "Aman dan resmi",
-                  "Situs sekolah"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa langkah pertama saat kena cyberbullying?",
-                "choices": [
-                  "Balas marah",
-                  "Diam dan laporkan",
-                  "Sebarkan balik"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa 2FA penting?",
-                "choices": [
-                  "Bikin akun lebih aman",
-                  "Buat login lama",
-                  "Buat akun jadi keren"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa itu etika digital?",
-                "choices": [
-                  "Aturan bermain game",
-                  "Sikap sopan saat online",
-                  "Cara membuat aplikasi"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa yang harus dilakukan sebelum share sebuah berita?",
-                "choices": [
-                  "Cek kebenaran",
-                  "Langsung share",
-                  "Baca judul saja"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa kebiasaan baik untuk kesehatan digital?",
-                "choices": [
-                  "Scroll terus",
-                  "Istirahat tiap 20 menit",
-                  "Main gelap-gelapan"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa risiko memakai wifi publik tanpa proteksi?",
-                "choices": [
-                  "Pencurian data",
-                  "Wifi jadi cepat",
-                  "Dapat hadiah"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa tindakan paling aman ketika menemukan akun mencurigakan?",
-                "choices": [
-                  "Abaikan dan laporkan",
-                  "Follow saja",
-                  "Berikan data"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa itu digital footprint?",
-                "choices": [
-                  "Jejak kaki",
-                  "Riwayat aktivitas online",
-                  "Riwayat game"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa perlu batasi informasi pribadi online?",
-                "choices": [
-                  "Biar misterius",
-                  "Biar tidak disalahgunakan",
-                  "Biar keren"
-                ],
-                "correct": 1
-              }
-            ],
-            "3": [
-              {
-                "q": "Apa tindakan tepat saat menerima pesan ancaman online?",
-                "choices": [
-                  "Balas langsung",
-                  "Laporkan & simpan bukti",
-                  "Sebarkan biar ramai"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa tanda aplikasi berbahaya?",
-                "choices": [
-                  "Izin berlebihan",
-                  "Ikon lucu",
-                  "Ukuran kecil"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Mengapa deepfake berbahaya?",
-                "choices": [
-                  "Gambarnya lucu",
-                  "Bisa menyebarkan berita palsu",
-                  "Hanya dipakai untuk game"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa langkah terbaik menghindari kecanduan digital?",
-                "choices": [
-                  "Buat jadwal dan patuhi",
-                  "Main terus",
-                  "Matikan alarm"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa risiko membagikan lokasi real-time?",
-                "choices": [
-                  "Aman aman saja",
-                  "Privasi bisa terancam",
-                  "Bikin HP cepat"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Mengapa backup data penting?",
-                "choices": [
-                  "Agar memori penuh",
-                  "Cegah kehilangan data",
-                  "Biar terlihat pintar"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa contoh malware?",
-                "choices": [
-                  "Virus komputer",
-                  "File sekolah",
-                  "Wallpaper HP"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Kapan harus menghubungi orang dewasa/ahli?",
-                "choices": [
-                  "Saat mengalami ancaman online",
-                  "Saat menang game",
-                  "Saat kuota habis"
-                ],
-                "correct": 0
-              },
-              {
-                "q": "Apa yang harus dilakukan saat akun diretas?",
-                "choices": [
-                  "Biarkan saja",
-                  "Ganti password & amankan email",
-                  "Buat status"
-                ],
-                "correct": 1
-              },
-              {
-                "q": "Apa contoh perilaku tidak sehat secara digital?",
-                "choices": [
-                  "Istirahat cukup",
-                  "Scrolling sampai pagi",
-                  "Gunakan mode gelap"
-                ],
-                "correct": 1
-              }
-            ]
-          }
-        }
       }
     }
   }
