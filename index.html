@@ -16,6 +16,7 @@
       <h1>SmartOne Finance</h1>
       <p>Game Edukasi: Bermain Sambil belajar</p>
       <button id="gassMulaiBtn">GASS MULAI</button>
+      <button id="howToPlayBtnLanding" class="btn-secondary">Cara Bermain</button>
     </div>
   </div>
 
@@ -36,6 +37,9 @@
   </div>
 
   <div id="screen-game" class="screen">
+    <!-- Tombol Help Floating -->
+    <button id="howToPlayBtnGame" class="btn-help" aria-label="Cara Bermain">?</button>
+    
     <div id="player1-info" class="player-info-box"></div>
     <div id="player2-info" class="player-info-box"></div>
     <div id="player3-info" class="player-info-box"></div>
@@ -74,6 +78,82 @@
         </div>
       </dialog>
 
+      <!-- Modal Cara Bermain -->
+      <dialog id="howToPlayModal">
+        <div class="modal-header">
+          <h2>📖 Cara Bermain</h2>
+          <button id="closeHowToPlay" class="btn-close" aria-label="Tutup">&times;</button>
+        </div>
+        <div class="modal-content">
+          <section>
+            <h3>🎯 Tujuan Game</h3>
+            <p>Kumpulkan poin sebanyak mungkin dengan mengelola keuangan dengan bijak. Naik level dengan mencapai target poin tertentu!</p>
+          </section>
+
+          <section>
+            <h3>🎲 Cara Main</h3>
+            <ol>
+              <li>Klik <strong>dadu</strong> di tengah papan untuk melempar</li>
+              <li>Pion Anda akan bergerak sesuai angka dadu</li>
+              <li>Ikuti instruksi di setiap kotak yang Anda singgahi</li>
+              <li>Jawab kuis untuk mendapat bonus poin</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>🎨 Jenis Kotak</h3>
+            <div class="tile-legend">
+              <div class="legend-item">
+                <span class="legend-color income"></span>
+                <strong>Income (Hijau)</strong> - Dapat penghasilan
+              </div>
+              <div class="legend-item">
+                <span class="legend-color expense"></span>
+                <strong>Expense (Merah)</strong> - Pengeluaran wajib
+              </div>
+              <div class="legend-item">
+                <span class="legend-color tax"></span>
+                <strong>Tax (Kuning)</strong> - Bayar pajak (%)
+              </div>
+              <div class="legend-item">
+                <span class="legend-color save"></span>
+                <strong>Save (Biru)</strong> - Menabung untuk masa depan
+              </div>
+              <div class="legend-item">
+                <span class="legend-color bonus"></span>
+                <strong>Bonus (Ungu)</strong> - Kuis berhadiah!
+              </div>
+              <div class="legend-item">
+                <span class="legend-color penalty"></span>
+                <strong>Penalty (Oranye)</strong> - Denda/kerugian
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h3>⭐ Sistem Level</h3>
+            <ul>
+              <li><strong>Level 1:</strong> 0 - 129.999 poin (Bonus kuis: 15.000)</li>
+              <li><strong>Level 2:</strong> 130.000 - 299.999 poin (Bonus kuis: 8.000)</li>
+              <li><strong>Level 3:</strong> 300.000+ poin (Bonus kuis: 5.000)</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>💡 Tips</h3>
+            <ul>
+              <li>Lewati kotak START untuk bonus +10.000 poin</li>
+              <li>Menabung itu penting untuk masa depan!</li>
+              <li>Jawab kuis dengan benar untuk bonus poin</li>
+              <li>Kelola pengeluaran dengan bijak</li>
+            </ul>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button id="closeHowToPlayBtn" class="btn-primary">Mengerti!</button>
+        </div>
+      </dialog>
+
 
 
       <!-- fallback notification (bawah layar) -->
@@ -84,15 +164,7 @@
       
 
       <div id="notifPopup" class="notif-popup" aria-live="polite"></div>
-      <script>
-        const screenLanding = document.getElementById("screen-landing");
-        const screenSetup = document.getElementById("screen-setup");
-        const gassMulaiBtn = document.getElementById("gassMulaiBtn");
-        gassMulaiBtn.addEventListener("click", () => {
-          screenLanding.classList.remove("active");
-          screenSetup.classList.add("active");
-        });
-      </script>
+      
 </body>
 
 </html>

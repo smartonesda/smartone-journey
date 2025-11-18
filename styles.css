@@ -67,6 +67,49 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+/* Secondary Button (untuk Cara Bermain di landing) */
+.btn-secondary {
+  background: transparent;
+  color: var(--text-light);
+  border: 2px solid var(--accent-blue);
+  margin-top: 15px;
+}
+.btn-secondary:hover {
+  background: var(--accent-blue);
+  color: #000;
+}
+
+/* Help Button (floating di game screen) */
+.btn-help {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: #000;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  box-shadow: 0 4px 15px rgba(0, 187, 249, 0.4);
+  transition: all 0.3s ease;
+}
+.btn-help:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 6px 20px rgba(0, 187, 249, 0.6);
+}
+
+/* Adjust player info boxes to avoid overlap with help button */
+#player1-info { position: absolute; top: 60px; left: 40px; border-color: #00eaff; }
+#player2-info { position: absolute; top: 60px; right: 40px; border-color: #ffc42b; }
+#player3-info { position: absolute; bottom: 60px; left: 40px; border-color: #ff4d4d; }
+#player4-info { position: absolute; bottom: 60px; right: 40px; border-color: #3cff75; }
 /* ======================================================
    PLAYER INFO BOXES
 ====================================================== */
@@ -271,6 +314,196 @@ dialog {
   visibility: visible;
 }
 
+/* ======================================================
+   HOW TO PLAY MODAL
+====================================================== */
+#howToPlayModal {
+  background: var(--bg-medium);
+  color: var(--text-light);
+  padding: 0;
+  border-radius: 16px;
+  width: 600px;
+  max-width: 90vw;
+  max-height: 85vh;
+  border: 2px solid rgba(0, 187, 249, 0.3);
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+  
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+#howToPlayModal[open] {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Header */
+.modal-header {
+  background: linear-gradient(135deg, var(--accent-blue), #0099cc);
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #000;
+  font-weight: 700;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  color: #000;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: rotate(90deg);
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 25px;
+  overflow-y: auto;
+  max-height: calc(85vh - 160px);
+}
+
+.modal-content section {
+  margin-bottom: 25px;
+}
+
+.modal-content section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-content h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--accent-blue);
+  border-bottom: 2px solid rgba(0, 187, 249, 0.2);
+  padding-bottom: 8px;
+}
+
+.modal-content p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.modal-content ol,
+.modal-content ul {
+  padding-left: 25px;
+  line-height: 1.8;
+}
+
+.modal-content li {
+  margin-bottom: 8px;
+}
+
+.modal-content strong {
+  color: var(--accent-blue);
+}
+
+/* Tile Legend */
+.tile-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.legend-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.legend-color.income {
+  background: linear-gradient(135deg, rgba(31,138,36,0.6), rgba(31,138,36,0.3));
+  border: 2px solid rgba(31,138,36,0.8);
+}
+
+.legend-color.expense {
+  background: linear-gradient(135deg, rgba(171,35,70,0.6), rgba(171,35,70,0.3));
+  border: 2px solid rgba(171,35,70,0.8);
+}
+
+.legend-color.tax {
+  background: linear-gradient(135deg, rgba(184,134,11,0.6), rgba(184,134,11,0.3));
+  border: 2px solid rgba(184,134,11,0.8);
+}
+
+.legend-color.save {
+  background: linear-gradient(135deg, rgba(30,111,159,0.6), rgba(30,111,159,0.3));
+  border: 2px solid rgba(30,111,159,0.8);
+}
+
+.legend-color.bonus {
+  background: linear-gradient(135deg, rgba(107,45,189,0.6), rgba(107,45,189,0.3));
+  border: 2px solid rgba(107,45,189,0.8);
+}
+
+.legend-color.penalty {
+  background: linear-gradient(135deg, rgba(189,95,45,0.6), rgba(189,95,45,0.3));
+  border: 2px solid rgba(189,95,45,0.8);
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: #000;
+  font-weight: 700;
+  padding: 12px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 187, 249, 0.4);
+}
+
 #quizQuestion {
   font-size: 18px;
   margin-bottom: 20px;
@@ -315,6 +548,37 @@ dialog {
   .player-info-box {
     width: 180px;
     font-size: 0.75rem;
+  }
+  
+  /* Responsive untuk modal cara bermain */
+  #howToPlayModal {
+    width: 95vw;
+    max-height: 90vh;
+  }
+  
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    font-size: 14px;
+  }
+  
+  .modal-content h3 {
+    font-size: 16px;
+  }
+  
+  .legend-item {
+    font-size: 13px;
+  }
+  
+  .btn-help {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    top: 15px;
+    right: 15px;
   }
 }
 .tile.highlight {

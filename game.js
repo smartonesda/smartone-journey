@@ -562,5 +562,81 @@ function updatePlayerLevel(player) {
   if (player.level !== oldLevel) showInModalOrNotif(`${player.name} naik ke LEVEL ${player.level}!`, 1800);
 }
 
+/* ---------------- How to Play Modal ---------------- */
+const howToPlayModal = document.getElementById("howToPlayModal");
+const howToPlayBtnLanding = document.getElementById("howToPlayBtnLanding");
+const howToPlayBtnGame = document.getElementById("howToPlayBtnGame");
+const closeHowToPlay = document.getElementById("closeHowToPlay");
+const closeHowToPlayBtn = document.getElementById("closeHowToPlayBtn");
+
+// Fungsi untuk membuka modal
+function openHowToPlayModal() {
+  try {
+    if (howToPlayModal) {
+      howToPlayModal.showModal();
+    }
+  } catch (e) {
+    console.error("Error opening how to play modal:", e);
+  }
+}
+
+// Fungsi untuk menutup modal
+function closeHowToPlayModal() {
+  try {
+    if (howToPlayModal) {
+      howToPlayModal.close();
+    }
+  } catch (e) {
+    console.error("Error closing how to play modal:", e);
+  }
+}
+
+// Event listeners untuk tombol buka modal
+if (howToPlayBtnLanding) {
+  howToPlayBtnLanding.addEventListener("click", openHowToPlayModal);
+}
+
+if (howToPlayBtnGame) {
+  howToPlayBtnGame.addEventListener("click", openHowToPlayModal);
+}
+
+// Event listeners untuk tombol tutup modal
+if (closeHowToPlay) {
+  closeHowToPlay.addEventListener("click", closeHowToPlayModal);
+}
+
+if (closeHowToPlayBtn) {
+  closeHowToPlayBtn.addEventListener("click", closeHowToPlayModal);
+}
+
+// Tutup modal jika klik di luar modal (backdrop)
+if (howToPlayModal) {
+  howToPlayModal.addEventListener("click", (e) => {
+    const rect = howToPlayModal.getBoundingClientRect();
+    if (
+      e.clientX < rect.left ||
+      e.clientX > rect.right ||
+      e.clientY < rect.top ||
+      e.clientY > rect.bottom
+    ) {
+      closeHowToPlayModal();
+    }
+  });
+}
+
+/* ---------------- Navigasi Halaman Awal ---------------- */
+const screenLanding = document.getElementById("screen-landing");
+const screenSetup = document.getElementById("screen-setup");
+const gassMulaiBtn = document.getElementById("gassMulaiBtn");
+
+if (gassMulaiBtn) {
+  gassMulaiBtn.addEventListener("click", () => {
+    screenLanding.classList.remove("active");
+    screenSetup.classList.add("active");
+  });
+}
+
+
+
 /* ---------------- init ---------------- */
 loadGameData();
