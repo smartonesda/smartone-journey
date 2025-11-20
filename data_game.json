@@ -529,6 +529,12 @@
           "title": "Menghindari Konflik Online",
           "points": 16000,
           "effect": "+16.000 Poin"
+        },
+        {
+          "type": "expense",
+          "title": "Lupa Logout Akun",
+          "points": -5000,
+          "effect": "-5.000 Poin (Data Baru)"
         }
       ],
       "quizLevels": {
@@ -931,6 +937,12 @@
           "type": "bonus",
           "title": "Bonus Etika",
           "effect": "Jawab kuis untuk poin tambahan"
+        },
+        {
+          "type": "penalty",
+          "title": "Membuang Sampah Sembarangan",
+          "points": -5000,
+          "effect": "-5.000 Poin (Data Baru)"
         }
       ],
       "quizLevels": {
@@ -1740,6 +1752,12 @@
           "type": "bonus",
           "title": "Bonus Edukasi",
           "effect": "Jawab kuis hidup sehat!"
+        },
+        {
+          "type": "save",
+          "title": "Rutin Cuci Tangan",
+          "points": 5000,
+          "effect": "Tabung 5.000 Poin (Data Baru)"
         }
       ],
       "quizLevels": {
