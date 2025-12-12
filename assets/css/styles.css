@@ -196,8 +196,19 @@ button:disabled {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.landing-container #gassMulaiBtn {
-  margin-right: .5rem;
+
+
+.landing-container .button-welcome-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.landing-container .button-welcome-screen>* {
+  margin: 0 !important;
 }
 
 .setup-container h2 {
@@ -1768,7 +1779,7 @@ dialog {
    13. MUTE BUTTON
 ====================================================== */
 .btn-mute {
-  position: absolute;
+  position: fixed;
   top: 80px;
   /* Di bawah sidebar toggle */
   right: 20px;
@@ -1803,7 +1814,7 @@ dialog {
 }
 
 /* Responsif untuk Mobile */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .btn-mute {
     top: 15px;
     right: 70px;
