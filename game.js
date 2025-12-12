@@ -211,7 +211,7 @@ function createPlayers(n = 2) {
     name: `P${i + 1}`,
     color: tokenColors[i % tokenColors.length],
     pos: 0,
-    points: 20000,
+    points: 2000,
     savingsPoints: 0, // Tabungan awal 0
     laps: 0,
     level: 1,
