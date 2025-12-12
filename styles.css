@@ -27,9 +27,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #070b2d; /* Fallback color */
+  background-color: #070b2d;
+  /* Fallback color */
   color: var(--text-light);
-  overflow: hidden; /* Mencegah scroll halaman utama */
+  overflow: hidden;
+  /* Mencegah scroll halaman utama */
   height: 100vh;
   width: 100%;
   text-align: center;
@@ -40,7 +42,8 @@ body {
    Mengatur perpindahan antar layar (Landing -> Setup -> Game)
 ====================================================== */
 .screen {
-  display: none; /* Default sembunyi */
+  display: none;
+  /* Default sembunyi */
   height: 100%;
   width: 100%;
   position: absolute;
@@ -51,7 +54,8 @@ body {
 }
 
 .screen.active {
-  display: flex; /* Tampilkan jika ada class active */
+  display: flex;
+  /* Tampilkan jika ada class active */
 }
 
 /* Background Animasi untuk Landing & Setup */
@@ -66,9 +70,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -80,7 +86,8 @@ body {
   background-image: radial-gradient(circle at center, #1f2041 0%, #05071b 85%),
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px; /* Pola Grid Tipis */
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  /* Pola Grid Tipis */
 }
 
 /* ======================================================
@@ -114,6 +121,7 @@ button:disabled {
   border: 2px solid var(--accent-blue);
   margin-top: 15px;
 }
+
 .btn-secondary:hover {
   background: var(--accent-blue);
   color: #000;
@@ -139,6 +147,7 @@ button:disabled {
   box-shadow: 0 4px 15px rgba(0, 187, 249, 0.4);
   transition: all 0.3s ease;
 }
+
 .btn-help:hover {
   transform: scale(1.1) rotate(15deg);
   box-shadow: 0 6px 20px rgba(0, 187, 249, 0.6);
@@ -165,6 +174,7 @@ button:disabled {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .btn-back:hover {
   background: var(--accent-blue);
   color: #000;
@@ -189,15 +199,20 @@ button:disabled {
 .setup-container h2 {
   margin-top: 20px;
 }
+
 .setup-container h2:first-child {
   margin-top: 0;
 }
+
 .setup-container button#startBtn {
   margin-top: 30px;
 }
+
 .setup-container select {
   display: none;
-} /* Hide old select */
+}
+
+/* Hide old select */
 
 /* Group Tombol Pilihan Pemain */
 .btn-group {
@@ -205,6 +220,7 @@ button:disabled {
   gap: 10px;
   margin: 10px 0 0px 0;
 }
+
 .btn-choice {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -215,9 +231,11 @@ button:disabled {
   cursor: pointer;
   transition: 0.2s;
 }
+
 .btn-choice:hover {
   background: var(--bg-medium);
 }
+
 .btn-choice.selected {
   background: var(--accent-blue);
   color: #000;
@@ -227,11 +245,13 @@ button:disabled {
 /* Grid Kartu Pilihan Kategori */
 .card-group {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 Kolom Presisi */
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 Kolom Presisi */
   gap: 15px;
   margin: 10px 0 20px 0;
   width: 100%;
 }
+
 .card-choice {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -247,20 +267,24 @@ button:disabled {
   padding: 15px;
   text-align: center;
 }
+
 .card-choice span {
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.3;
 }
+
 .card-choice .emoji-icon {
   font-size: 2rem;
   margin-bottom: 8px;
 }
+
 .card-choice:hover {
   background: var(--bg-medium);
   transform: translateY(-5px);
   border-color: rgba(255, 255, 255, 0.3);
 }
+
 .card-choice.selected {
   background: var(--accent-blue);
   color: #000;
@@ -280,11 +304,13 @@ button:disabled {
   width: 100%;
   height: 100%;
 }
+
 .center-area h1 {
   font-size: 2.5rem;
   margin-bottom: 5px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
+
 .category-badge {
   font-size: 1rem;
   color: var(--accent-blue);
@@ -303,6 +329,7 @@ button:disabled {
   position: relative;
   margin: 0 auto;
 }
+
 /* Grid System 6x6 */
 .board {
   display: grid;
@@ -321,7 +348,8 @@ button:disabled {
   background: rgba(31, 32, 65, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 16px;
-  padding: 0; /* Padding diatur di header/body */
+  padding: 0;
+  /* Padding diatur di header/body */
   width: 220px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   text-align: left;
@@ -333,6 +361,7 @@ button:disabled {
   z-index: 10;
   transition: transform 0.3s ease;
 }
+
 .player-info-box:hover {
   transform: scale(1.02);
 }
@@ -346,16 +375,19 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
 }
+
 .p-body {
   padding: 12px 15px;
   color: #f0f0f0;
 }
+
 .p-row {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
 }
+
 .p-row:last-child {
   margin-bottom: 0;
 }
@@ -366,16 +398,19 @@ button:disabled {
   right: 100%;
   margin-right: 25px;
 }
+
 .pos-tr {
   top: 20px;
   left: 100%;
   margin-left: 25px;
 }
+
 .pos-bl {
   bottom: 20px;
   right: 100%;
   margin-right: 25px;
 }
+
 .pos-br {
   bottom: 20px;
   left: 100%;
@@ -396,20 +431,24 @@ button:disabled {
   word-wrap: break-word;
   overflow-wrap: anywhere;
   line-height: 1.15;
-  border-radius: 12px; /* Smooth Corner */
+  border-radius: 12px;
+  /* Smooth Corner */
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
+
 .tile .title {
   font-size: 9px;
   font-weight: 600;
   line-height: 1.1;
 }
+
 .tile .effect {
   font-size: 7.2px;
   opacity: 0.85;
   line-height: 1.1;
 }
+
 .tile.void {
   visibility: hidden !important;
   pointer-events: none !important;
@@ -419,61 +458,54 @@ button:disabled {
 
 /* Warna Spesifik Tile */
 .tile.income {
-  background: linear-gradient(
-    135deg,
-    rgba(31, 138, 36, 0.35),
-    rgba(31, 138, 36, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(31, 138, 36, 0.35),
+      rgba(31, 138, 36, 0.15));
   border-color: rgba(31, 138, 36, 0.5);
 }
+
 .tile.expense {
-  background: linear-gradient(
-    135deg,
-    rgba(171, 35, 70, 0.35),
-    rgba(171, 35, 70, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(171, 35, 70, 0.35),
+      rgba(171, 35, 70, 0.15));
   border-color: rgba(171, 35, 70, 0.5);
 }
+
 .tile.tax {
-  background: linear-gradient(
-    135deg,
-    rgba(184, 134, 11, 0.35),
-    rgba(184, 134, 11, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(184, 134, 11, 0.35),
+      rgba(184, 134, 11, 0.15));
   border-color: rgba(184, 134, 11, 0.5);
 }
+
 .tile.save {
-  background: linear-gradient(
-    135deg,
-    rgba(30, 111, 159, 0.35),
-    rgba(30, 111, 159, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(30, 111, 159, 0.35),
+      rgba(30, 111, 159, 0.15));
   border-color: rgba(30, 111, 159, 0.5);
 }
+
 .tile.bonus {
-  background: linear-gradient(
-    135deg,
-    rgba(107, 45, 189, 0.35),
-    rgba(107, 45, 189, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(107, 45, 189, 0.35),
+      rgba(107, 45, 189, 0.15));
   border-color: rgba(107, 45, 189, 0.5);
 }
+
 .tile.penalty {
-  background: linear-gradient(
-    135deg,
-    rgba(189, 95, 45, 0.35),
-    rgba(189, 95, 45, 0.15)
-  );
+  background: linear-gradient(135deg,
+      rgba(189, 95, 45, 0.35),
+      rgba(189, 95, 45, 0.15));
   border-color: rgba(189, 95, 45, 0.5);
 }
+
 .tile.start {
-  background: linear-gradient(
-    135deg,
-    rgba(128, 128, 128, 0.25),
-    rgba(128, 128, 128, 0.1)
-  );
+  background: linear-gradient(135deg,
+      rgba(128, 128, 128, 0.25),
+      rgba(128, 128, 128, 0.1));
   border-color: rgba(128, 128, 128, 0.5);
 }
+
 .tile.highlight {
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
   transform: scale(1.01);
@@ -498,6 +530,7 @@ button:disabled {
     top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
 }
+
 .pion:hover {
   transform: scale(1.3) translateY(-5px);
   z-index: 3001;
@@ -510,16 +543,19 @@ button:disabled {
   text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
   filter: drop-shadow(0 5px 5px rgba(0, 234, 255, 0.4));
 }
+
 #pion2 {
   color: #ffc42b;
   text-shadow: 0 0 10px #ffc42b, 0 0 20px #ffc42b;
   filter: drop-shadow(0 5px 5px rgba(255, 196, 43, 0.4));
 }
+
 #pion3 {
   color: #ff4d4d;
   text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d;
   filter: drop-shadow(0 5px 5px rgba(255, 77, 77, 0.4));
 }
+
 #pion4 {
   color: #3cff75;
   text-shadow: 0 0 10px #3cff75, 0 0 20px #3cff75;
@@ -553,14 +589,16 @@ button:disabled {
   pointer-events: auto;
   width: 150px;
   height: 150px;
-  background: transparent; /* Ubah background jadi transparan */
+  background: transparent;
+  /* Ubah background jadi transparan */
   border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s, opacity 0.2s;
-  perspective: 1000px; /* Tambahkan perspektif untuk 3D */
+  perspective: 1000px;
+  /* Tambahkan perspektif untuk 3D */
 }
 
 .dice-container {
@@ -568,7 +606,8 @@ button:disabled {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-75px); /* Mundurkan kubus agar pas di tengah */
+  transform: translateZ(-75px);
+  /* Mundurkan kubus agar pas di tengah */
   transition: transform 0.5s ease;
 }
 
@@ -591,18 +630,23 @@ button:disabled {
 .face.front {
   transform: rotateY(0deg) translateZ(75px);
 }
+
 .face.back {
   transform: rotateY(180deg) translateZ(75px);
 }
+
 .face.right {
   transform: rotateX(90deg) translateZ(75px);
 }
+
 .face.left {
   transform: rotateX(-90deg) translateZ(75px);
 }
+
 .face.top {
   transform: rotateY(90deg) translateZ(75px);
 }
+
 .face.bottom {
   transform: rotateY(-90deg) translateZ(75px);
 }
@@ -611,18 +655,23 @@ button:disabled {
 .dice-container.show-1 {
   transform: translateZ(-75px) rotateY(0deg);
 }
+
 .dice-container.show-6 {
   transform: translateZ(-75px) rotateY(180deg);
 }
+
 .dice-container.show-3 {
   transform: translateZ(-75px) rotateX(-90deg);
 }
+
 .dice-container.show-4 {
   transform: translateZ(-75px) rotateX(90deg);
 }
+
 .dice-container.show-5 {
   transform: translateZ(-75px) rotateY(-90deg);
 }
+
 .dice-container.show-2 {
   transform: translateZ(-75px) rotateY(90deg);
 }
@@ -630,6 +679,7 @@ button:disabled {
 #dice:hover {
   transform: scale(1.05);
 }
+
 #dice[aria-disabled="true"] {
   opacity: 0.6;
   cursor: not-allowed;
@@ -656,6 +706,7 @@ button:disabled {
   0% {
     transform: translateZ(-75px) rotateX(0deg) rotateY(0deg);
   }
+
   100% {
     transform: translateZ(-75px) rotateX(1080deg) rotateY(720deg);
   }
@@ -672,6 +723,7 @@ dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
 }
+
 dialog {
   border: none;
   padding: 0;
@@ -695,11 +747,13 @@ dialog {
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   z-index: 1000;
 }
+
 #quizModal[open] {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   visibility: visible;
 }
+
 #quizModal .quiz-question,
 #quizQuestion,
 .quiz-question {
@@ -707,11 +761,13 @@ dialog {
   font-size: 1.05rem;
   margin-bottom: 8px;
 }
+
 #quizChoices {
   display: grid;
   gap: 10px;
   margin-bottom: 20px;
 }
+
 #quizChoices label {
   display: flex;
   gap: 12px;
@@ -721,6 +777,7 @@ dialog {
   background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
 }
+
 .quiz-footer {
   /* Footer for quiz modal (kept separate from general .modal-footer) */
   padding: 20px 25px;
@@ -728,6 +785,7 @@ dialog {
   display: flex;
   justify-content: center;
 }
+
 .btn-primary {
   background: var(--accent-blue);
   color: #000;
@@ -739,6 +797,7 @@ dialog {
   font-size: 16px;
   transition: all 0.2s;
 }
+
 .btn-primary:hover {
   transform: scale(1.05);
   background: #fff;
@@ -766,14 +825,17 @@ dialog {
   z-index: 10000;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Penting agar footer tidak kepotong */
+  flex-direction: column;
+  /* Penting agar footer tidak kepotong */
 }
+
 #howToPlayModal[open] {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   visibility: visible;
   display: flex;
 }
+
 .modal-header {
   flex-shrink: 0;
   background: linear-gradient(135deg, var(--accent-blue), #0099cc);
@@ -783,12 +845,14 @@ dialog {
   align-items: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
+
 .modal-content {
   flex: 1;
   overflow-y: auto;
   padding: 25px;
   text-align: left;
 }
+
 .modal-footer {
   flex-shrink: 0;
   padding: 20px 25px;
@@ -797,12 +861,14 @@ dialog {
   display: flex;
   justify-content: center;
 }
+
 .modal-header h2 {
   margin: 0;
   font-size: 24px;
   color: #000;
   font-weight: 700;
 }
+
 .btn-close {
   background: transparent;
   border: none;
@@ -810,9 +876,11 @@ dialog {
   font-size: 32px;
   cursor: pointer;
 }
+
 .modal-content section {
   margin-bottom: 25px;
 }
+
 .modal-content h3 {
   font-size: 18px;
   margin-bottom: 12px;
@@ -827,6 +895,7 @@ dialog {
   flex-direction: column;
   gap: 10px;
 }
+
 .legend-item {
   display: flex;
   align-items: center;
@@ -835,6 +904,7 @@ dialog {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
 }
+
 .legend-color {
   width: 30px;
   height: 30px;
@@ -866,6 +936,7 @@ dialog {
   width: 520px;
   max-width: 90vw;
 }
+
 .notif-popup.show {
   opacity: 1;
   visibility: visible;
@@ -889,10 +960,12 @@ dialog {
 
   /* Membuat warna asli teks transparan agar background muncul */
   -webkit-text-fill-color: transparent;
-  color: transparent; /* Fallback standard */
+  color: transparent;
+  /* Fallback standard */
 
   text-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
 }
+
 .notif-popup small {
   font-size: 15px;
   font-weight: 400;
@@ -918,11 +991,13 @@ dialog {
   text-align: center;
   animation: fadePopup 0.4s ease-out;
 }
+
 @keyframes fadePopup {
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -933,8 +1008,12 @@ dialog {
 
 .custom-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.85); /* Background gelap banget */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  /* Background gelap banget */
   backdrop-filter: blur(8px);
   z-index: 9999;
   display: flex;
@@ -974,8 +1053,15 @@ dialog {
 }
 
 @keyframes floatIcon {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .game-over-box h2 {
@@ -1006,21 +1092,26 @@ dialog {
     width: 330px;
     height: 330px;
   }
+
   .card-group {
     grid-template-columns: repeat(2, 1fr);
   }
+
   #dice {
     width: 90px;
     height: 90px;
     font-size: 36px;
   }
+
   .center-area h1 {
     font-size: 1.8rem;
   }
+
   #howToPlayModal {
     width: 95vw;
     max-height: 90vh;
   }
+
   .btn-help {
     width: 45px;
     height: 45px;
@@ -1028,6 +1119,7 @@ dialog {
     top: 15px;
     right: 15px;
   }
+
   .player-info-box {
     width: 140px;
     /* padding: 6px; */
@@ -1038,10 +1130,11 @@ dialog {
 /* REVISI */
 
 @media (max-width: 569px) {
+
   .setup-container,
-  .landing-container > *:not(:first-child),
+  .landing-container>*:not(:first-child),
   setup-container,
-  .landing-container > *:not(:last-child) {
+  .landing-container>*:not(:last-child) {
     margin-top: 1.5rem;
   }
 }
@@ -1068,7 +1161,8 @@ dialog {
 /* Tombol Toggle Sidebar (Hamburger) */
 .btn-sidebar-toggle {
   position: fixed;
-  top: 80px; /* Di bawah tombol back */
+  top: 80px;
+  /* Di bawah tombol back */
   left: 20px;
   width: 50px;
   height: 50px;
@@ -1078,13 +1172,15 @@ dialog {
   border: 2px solid var(--accent-blue);
   z-index: 2000;
   cursor: pointer;
-  display: none; /* Sembunyi di desktop */
+  display: none;
+  /* Sembunyi di desktop */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
   padding: 12px;
 }
+
 .btn-sidebar-toggle span {
   display: block;
   width: 100%;
@@ -1098,22 +1194,26 @@ dialog {
 .btn-sidebar-toggle.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
+
 .btn-sidebar-toggle.open span:nth-child(2) {
   opacity: 0;
 }
+
 .btn-sidebar-toggle.open span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Media Query untuk Tablet dan Mobile */
 @media (max-width: 1024px) {
+
   #backBtnGame,
   #sidebar-toggle-btn {
     z-index: 3002 !important;
   }
 
   .center-area {
-    padding-top: 80px; /* Beri ruang untuk header */
+    padding-top: 80px;
+    /* Beri ruang untuk header */
   }
 
   /* Tampilkan tombol sidebar */
@@ -1149,7 +1249,8 @@ dialog {
     position: static;
     width: 100%;
     margin: 0;
-    transform: none !important; /* Hapus hover effect scale */
+    transform: none !important;
+    /* Hapus hover effect scale */
   }
 
   /* Atur ulang posisi box di dalam sidebar */
@@ -1170,22 +1271,27 @@ dialog {
     font-size: 2rem;
     margin-bottom: 10px;
   }
+
   #board-wrapper {
     width: 90vw;
     height: 90vw;
     max-width: 450px;
     max-height: 450px;
   }
+
   .tile .title {
     font-size: 8px;
   }
+
   .tile .effect {
     font-size: 6.5px;
   }
+
   #dice {
     width: 120px;
     height: 120px;
   }
+
   /* Penyesuaian Ukuran Dadu 3D */
   .face {
     width: 120px;
@@ -1193,42 +1299,55 @@ dialog {
     font-size: 56px;
     border-radius: 20px;
   }
+
   .dice-container {
     transform: translateZ(-60px);
   }
+
   .face.front {
     transform: rotateY(0deg) translateZ(60px);
   }
+
   .face.back {
     transform: rotateY(180deg) translateZ(60px);
   }
+
   .face.right {
     transform: rotateX(90deg) translateZ(60px);
   }
+
   .face.left {
     transform: rotateX(-90deg) translateZ(60px);
   }
+
   .face.top {
     transform: rotateY(90deg) translateZ(60px);
   }
+
   .face.bottom {
     transform: rotateY(-90deg) translateZ(60px);
   }
+
   .dice-container.show-1 {
     transform: translateZ(-60px) rotateY(0deg);
   }
+
   .dice-container.show-6 {
     transform: translateZ(-60px) rotateY(180deg);
   }
+
   .dice-container.show-3 {
     transform: translateZ(-60px) rotateX(-90deg);
   }
+
   .dice-container.show-4 {
     transform: translateZ(-60px) rotateX(90deg);
   }
+
   .dice-container.show-5 {
     transform: translateZ(-60px) rotateY(-90deg);
   }
+
   .dice-container.show-2 {
     transform: translateZ(-60px) rotateY(90deg);
   }
@@ -1244,10 +1363,12 @@ dialog {
     width: 95vw;
     height: 95vw;
   }
+
   #dice {
     width: 100px;
     height: 100px;
   }
+
   /* Penyesuaian Ukuran Dadu 3D lebih kecil */
   .face {
     width: 100px;
@@ -1255,42 +1376,55 @@ dialog {
     font-size: 48px;
     border-radius: 16px;
   }
+
   .dice-container {
     transform: translateZ(-50px);
   }
+
   .face.front {
     transform: rotateY(0deg) translateZ(50px);
   }
+
   .face.back {
     transform: rotateY(180deg) translateZ(50px);
   }
+
   .face.right {
     transform: rotateX(90deg) translateZ(50px);
   }
+
   .face.left {
     transform: rotateX(-90deg) translateZ(50px);
   }
+
   .face.top {
     transform: rotateY(90deg) translateZ(50px);
   }
+
   .face.bottom {
     transform: rotateY(-90deg) translateZ(50px);
   }
+
   .dice-container.show-1 {
     transform: translateZ(-50px) rotateY(0deg);
   }
+
   .dice-container.show-6 {
     transform: translateZ(-50px) rotateY(180deg);
   }
+
   .dice-container.show-3 {
     transform: translateZ(-50px) rotateX(-90deg);
   }
+
   .dice-container.show-4 {
     transform: translateZ(-50px) rotateX(90deg);
   }
+
   .dice-container.show-5 {
     transform: translateZ(-50px) rotateY(-90deg);
   }
+
   .dice-container.show-2 {
     transform: translateZ(-50px) rotateY(90deg);
   }
@@ -1303,51 +1437,61 @@ dialog {
 
 /* 1. Wadah Kaca untuk Logo (Agar tidak terlihat melayang polos) */
 .header-logos {
-  display: inline-flex; /* Agar wadah mengikuti isi, bukan full width */
+  display: inline-flex;
+  /* Agar wadah mengikuti isi, bukan full width */
   justify-content: center;
   align-items: center;
   gap: 25px;
   margin-bottom: 30px;
-  
+
   /* Efek Glassmorphism */
-  background: rgba(255, 255, 255, 0.05); /* Putih transparan tipis */
+  background: rgba(255, 255, 255, 0.05);
+  /* Putih transparan tipis */
   padding: 10px 10px;
-  border-radius: 20px; /* Sudut membulat */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Garis tepi halus */
-  backdrop-filter: blur(5px); /* Efek blur di belakang logo */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan lembut */
+  border-radius: 20px;
+  /* Sudut membulat */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Garis tepi halus */
+  backdrop-filter: blur(5px);
+  /* Efek blur di belakang logo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Bayangan lembut */
 }
 
 /* 2. Styling Umum Logo */
 .logo-img {
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); /* Sedikit bayangan pada logo agar pop-up */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  /* Sedikit bayangan pada logo agar pop-up */
   transition: transform 0.3s ease;
 }
 
 .logo-img:hover {
-  transform: scale(1.05); /* Efek zoom dikit pas di-hover */
+  transform: scale(1.05);
+  /* Efek zoom dikit pas di-hover */
 }
 
 /* 3. Penyeimbangan Ukuran (Visual Weight Balancing) */
 
 /* Logo Sekolah (Vertikal) - Kita set tingginya standar */
 .logo-school {
-  height: 70px; 
+  height: 70px;
 }
 
 /* Logo ISO (Horizontal) - Kita KECILKAN tingginya agar luasnya seimbang */
 .logo-iso {
-  height: 50px; /* Lebih pendek dari sekolah, karena dia lebar */
-  max-width: 140px; /* Jaga agar tidak terlalu lebar juga */
+  height: 50px;
+  /* Lebih pendek dari sekolah, karena dia lebar */
+  max-width: 140px;
+  /* Jaga agar tidak terlalu lebar juga */
 }
 
 /* Garis Pemisah */
 .header-logos .divider {
   width: 2px;
   height: 50px;
-  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 /* styles.css - New Popup Content Styles */
@@ -1362,19 +1506,25 @@ dialog {
 .notif-icon-box {
   font-size: 3.5rem;
   margin-bottom: 5px;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
   animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes bounceIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
 .notif-title-box {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #a5b4fc; /* Warna biru muda lembut */
+  color: #a5b4fc;
+  /* Warna biru muda lembut */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -1383,11 +1533,12 @@ dialog {
   font-size: 2.5rem;
   font-weight: 800;
   margin: 5px 0;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .notif-amount-box.plus {
-  color: #4ade80; /* Hijau terang */
+  color: #4ade80;
+  /* Hijau terang */
   background: linear-gradient(to bottom, #4ade80, #22c55e);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1395,7 +1546,8 @@ dialog {
 }
 
 .notif-amount-box.minus {
-  color: #f87171; /* Merah terang */
+  color: #f87171;
+  /* Merah terang */
   background: linear-gradient(to bottom, #f87171, #ef4444);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1408,7 +1560,202 @@ dialog {
   font-style: italic;
   max-width: 80%;
   line-height: 1.4;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 8px 15px;
   border-radius: 10px;
+}
+
+/* ======================================================
+   12. ANIMATION: FLYING POINTS
+====================================================== */
+.flying-point {
+  position: fixed;
+  font-size: 1.5rem;
+  font-weight: 800;
+  pointer-events: none;
+  z-index: 9999;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 1s ease-in,
+    top 1s cubic-bezier(0.19, 1, 0.22, 1),
+    left 1s cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 1;
+}
+
+
+.flying-point.plus {
+  color: #4ade80;
+  /* Hijau Terang Solid */
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 900;
+}
+
+.flying-point.minus {
+  color: #ef4444;
+  /* Merah Terang Solid */
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 900;
+}
+
+@keyframes pawnExit {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  20% {
+    transform: scale(1.4) rotate(-20deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0) rotate(180deg) translateY(100px);
+    opacity: 0;
+  }
+}
+
+.pion.exiting {
+  animation: pawnExit 1s forwards ease-in;
+}
+
+/* ======================================================
+   13. ELIMINATED STATE (STAMP EFFECT)
+====================================================== */
+.player-info-box.eliminated {
+  filter: grayscale(1) opacity(0.8);
+  border-color: #ef4444;
+  pointer-events: none;
+}
+
+.stamp-eliminated {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  border: 5px solid #ef4444;
+  color: #ef4444;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 10px;
+  opacity: 0.9;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px #ef4444;
+  animation: stampIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stampIn {
+  from {
+    transform: translate(-50%, -50%) scale(2) rotate(0deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1) rotate(-15deg);
+    opacity: 0.9;
+  }
+
+}
+
+/* ======================================================
+   14. WINNER MODAL & CONFETTI
+====================================================== */
+.winner-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.winner-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.winner-content {
+  text-align: center;
+  color: #fff;
+  transform: scale(0.5);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.winner-modal.show .winner-content {
+  transform: scale(1);
+}
+
+.winner-title {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(245, 158, 11, 0.5);
+}
+
+.winner-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.winner-trophy {
+  font-size: 6rem;
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* CONFETTI */
+#confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
 }

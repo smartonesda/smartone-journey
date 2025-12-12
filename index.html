@@ -17,15 +17,15 @@
        - `#howToPlayBtnLanding` -> membuka modal `howToPlayModal` (fungsi `openHowToPlayModal`).
   -->
   <div id="screen-landing" class="screen active">
-    
+
     <div class="landing-container">
       <div class="header-logos">
-      <img src="Logo_sekolah.png" alt="Logo Sekolah" class="logo-img logo-school">
+        <img src="Logo_sekolah.png" alt="Logo Sekolah" class="logo-img logo-school">
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <img src="logo_iso.png" alt="Logo ISO" class="logo-img logo-iso">
-    </div>
+        <img src="logo_iso.png" alt="Logo ISO" class="logo-img logo-iso">
+      </div>
       <h1>SmartOne Journey 🚀</h1>
       <p>Jelajahi Dunia Pengetahuan!</p>
       <button id="gassMulaiBtn">GASS MULAI</button>
@@ -34,7 +34,7 @@
       </button>
     </div>
   </div>
-  
+
   <!-- Setup screen (ID: screen-setup)
        Area pilihan sebelum permainan dimulai. Elemen terkait JS:
        - `#category-card-group` diisi oleh `populateCategorySelect()` dari `data_game.json`.
@@ -58,7 +58,7 @@
       <button id="startBtn" disabled>Memuat Data...</button>
     </div>
   </div>
-  
+
   <!-- Game screen (ID: screen-game)
        Area utama permainan. Elemen penting dan hubungan ke `game.js`:
        - `#howToPlayBtnGame` -> membuka modal `howToPlayModal`.
@@ -226,6 +226,20 @@
   </dialog>
 
   <script src="game.js"></script>
+  <!-- WINNER MODAL -->
+  <div id="winnerModal" class="winner-modal">
+    <div id="confetti-container"></div>
+    <div class="winner-content">
+      <h1 class="winner-title">WINNER!</h1>
+      <div id="winnerName" class="winner-name">Player Name</div>
+      <div class="winner-trophy">🏆</div>
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+        <button id="playAgainBtn" class="btn-primary">Main Lagi</button>
+        <button id="backToMenuBtn" class="btn-secondary">Menu Utama</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

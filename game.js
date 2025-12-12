@@ -240,7 +240,7 @@ function updatePlayersPanel() {
     box.innerHTML = `
       <div class="p-header" style="background: ${p.color};">
         <span>👤 ${p.name}</span>
-        <span style="font-size:0.8em; background:rgba(0,0,0,0.2); padding:2px 6px; border-radius:10px;">
+        <span id="level-badge-${p.id}" style="font-size:0.8em; background:rgba(0,0,0,0.2); padding:2px 6px; border-radius:10px;">
           ⭐ Lv.${p.level}
         </span>
       </div>
@@ -257,6 +257,43 @@ function updatePlayersPanel() {
       </div>
     `;
     box.style.boxShadow = `0 8px 20px rgba(0,0,0,0.3), 0 0 0 2px ${p.color}`;
+
+    // [UPDATED] Visual Eliminasi
+    // Hanya tampilkan jika status bangkrut SUDAH dikonfirmasi (setelah popup)
+    if (p.isBankrupt) {
+      box.classList.add("eliminated");
+      // Cek apakah stamp sudah ada biar tidak double
+      if (!box.querySelector(".stamp-eliminated")) {
+        const stamp = document.createElement("div");
+        stamp.className = "stamp-eliminated";
+        stamp.textContent = "TERELIMINASI";
+        box.appendChild(stamp);
+      }
+    } else {
+      box.classList.remove("eliminated");
+      const stamp = box.querySelector(".stamp-eliminated");
+      if (stamp) stamp.remove();
+    }
+  });
+}
+
+/**
+ * updateTurnIndicator
+ * Highlight panel pemain yang sedang giliran.
+ */
+function updateTurnIndicator() {
+  players.forEach((p, index) => {
+    const box = playerInfoBoxes[index];
+    if (!box) return;
+    if (index === turn % players.length) {
+      box.classList.add("active-turn");
+      box.style.border = `2px solid ${p.color}`;
+      box.style.transform = "scale(1.05)";
+    } else {
+      box.classList.remove("active-turn");
+      box.style.border = "none";
+      box.style.transform = "scale(1)";
+    }
   });
 }
 
@@ -283,18 +320,23 @@ function nextTurn() {
 
   // Jika semua bangkrut (teoritis gak mungkin kalau ada logika winner), reset
   if (attempts > players.length) {
-     alert("Permainan Selesai!");
-     return;
+    alert("Permainan Selesai!");
+    return;
   }
 
-  setTurnInfo();
-}
-/**
- * setTurnInfo
- * Memperbarui teks instruksi giliran saat ini pada UI.
- */
-function setTurnInfo() {
+
+  // Cek Game Over (Jika sisa 1 pemain)
+  const activePlayers = players.filter(p => !p.isBankrupt);
+  if (activePlayers.length <= 1 && players.length > 1) {
+    // showInModalOrNotif(`Game Over! Pemenang: ${activePlayers[0]?.name || 'Tidak ada'}`);
+    showWinnerModal(activePlayers[0]?.name || 'Champion');
+    return;
+  }
+
+  updateTurnIndicator();
   const p = currentPlayer();
+
+  // Reset dice state/visuals if needed
   diceValueEl.textContent = `Giliran ${p.name} melempar dadu!`;
 }
 
@@ -309,10 +351,13 @@ function tileElementAt(r, c) {
   return boardEl.querySelector(`.tile[data-pos="${r}-${c}"]`);
 }
 
+
 /**
  * updatePionPosition
  * Menghitung posisi pixel pion pada papan dan mengatur
  * style `left`/`top` agar pion tampil berada di tengah tile.
+ * [UPDATED] Menangani overlap: jika ada >1 pemain di tile sama,
+ * geser ke 4 sudut agar semua terlihat.
  */
 function updatePionPosition(player) {
   const pion = pionEls[player.id];
@@ -330,16 +375,56 @@ function updatePionPosition(player) {
 
   const boardRect = boardEl.getBoundingClientRect();
   const tileRect = tile.getBoundingClientRect();
-  const left =
+
+  // Posisi Dasar (Tengah Tile)
+  let left =
     tileRect.left -
     boardRect.left +
     tileRect.width / 2 -
     (pion.offsetWidth || 32) / 2;
-  const top =
+  let top =
     tileRect.top -
     boardRect.top +
     tileRect.height / 2 -
     (pion.offsetHeight || 32) / 2;
+
+  // [FIX] Jika pemain bangkrut, sembunyikan pion (double check)
+  if (player.isBankrupt) {
+    pion.style.display = "none";
+    return;
+  } else {
+    pion.style.display = "block"; // Pastikan tampil jika aktif
+  }
+
+  // --- LOGIKA OVERLAP ---
+  // Temukan semua pemain yang ada di tile ini (posisi sama, belum bangkrut)
+  const peers = players.filter(p => !p.isBankrupt && p.pos === player.pos);
+
+  if (peers.length > 1) {
+    // Sort biar urutannya konsisten
+    peers.sort((a, b) => a.id - b.id);
+    const indexInTile = peers.findIndex(p => p.id === player.id);
+
+    // Offset konfigurasi (x, y) dalam pixel
+    const offsets = [
+      { x: -8, y: -8 }, // 0: Kiri Atas
+      { x: 8, y: -8 },  // 1: Kanan Atas
+      { x: -8, y: 8 },  // 2: Kiri Bawah
+      { x: 8, y: 8 }    // 3: Kanan Bawah
+    ];
+
+    // Gunakan modulo 4 jika pemain >4 (meski max 4)
+    const off = offsets[indexInTile % 4];
+
+    left += off.x;
+    top += off.y;
+
+    // Perkecil sedikit biar muat
+    pion.style.transform = "scale(0.8)";
+  } else {
+    // Reset scale jika sendirian
+    pion.style.transform = "scale(1)";
+  }
 
   pion.style.left = `${Math.round(left)}px`;
   pion.style.top = `${Math.round(top)}px`;
@@ -415,26 +500,26 @@ function applyStartBonus(player) {
  */
 function handleExpense(player, amount) {
   // amount harus positif (contoh: 12000 untuk pengeluaran 12k)
-  
+
   // Skenario 1: Poin Dompet Cukup
   if (player.points >= amount) {
     player.points -= amount;
-    return true; 
+    return true;
   }
 
   // Skenario 2: Poin Kurang, Cek Tabungan (Darurat)
   const deficit = amount - player.points; // Kekurangan biaya
-  
+
   if (player.savingsPoints >= deficit) {
     // Kuras dompet jadi 0
     player.points = 0;
     // Ambil sisanya dari tabungan
     player.savingsPoints -= deficit;
-    
+
     // Tampilkan Notif Darurat (Merah/Kritis)
     showNotif(
-      `⚠️ DANA DARURAT TERPAKAI!`, 
-      `Poin habis! ${fmt(deficit)} diambil dari Tabungan.`, 
+      `⚠️ DANA DARURAT TERPAKAI!`,
+      `Poin habis! ${fmt(deficit)} diambil dari Tabungan.`,
       3000
     );
     return true; // Selamat
@@ -468,17 +553,17 @@ function showTilePopup(type, title, amount, desc) {
   // 2. Format Nominal (Plus/Minus)
   let amountClass = "neutral";
   let amountText = "";
-  
+
   if (typeof amount === 'number') {
-      if (amount > 0) {
-          amountClass = "plus";
-          amountText = "+ " + fmt(amount);
-      } else if (amount < 0) {
-          amountClass = "minus";
-          amountText = "- " + fmt(Math.abs(amount));
-      }
+    if (amount > 0) {
+      amountClass = "plus";
+      amountText = "+ " + fmt(amount);
+    } else if (amount < 0) {
+      amountClass = "minus";
+      amountText = "- " + fmt(Math.abs(amount));
+    }
   } else {
-      amountText = amount; // Jika teks (misal: "Jawab Kuis!")
+    amountText = amount; // Jika teks (misal: "Jawab Kuis!")
   }
 
   // 3. Susun HTML
@@ -509,15 +594,25 @@ function showTilePopup(type, title, amount, desc) {
  * Menjalankan efek tile tempat pemain mendarat (income,
  * expense, tax, save, bonus, penalty, start), men-trigger
  * quiz bila diperlukan, dan memperbarui level/panel.
+ * [ASYNC] Menunggu animasi/popup selesai sebelum giliran berakhir.
  */
-function resolveTile(player) {
+async function resolveTile(player) {
   const tile = currentTiles[player.pos % currentTiles.length];
-  const eduText = currentEduText[tile.type] || ""; // Deskripsi edukasi
+  const eduText = currentEduText[tile.type] || "";
+
+  // Ambil elemen tile untuk koordinat awal animasi
+  const tileEl = tileElementAt(path[player.pos % path.length][0], path[player.pos % path.length][1]);
+  const startRect = tileEl ? tileEl.getBoundingClientRect() : { left: 0, top: 0, width: 0, height: 0 };
+  const endRect = getPlayerInfoRect(player.id);
 
   let runQuiz = false;
+  let pointChange = 0;
+  let pointType = "neutral";
 
   switch (tile.type) {
     case T.INCOME:
+      pointChange = tile.points;
+      pointType = "plus";
       player.points += tile.points;
       showTilePopup(T.INCOME, tile.title, tile.points, eduText);
       break;
@@ -526,6 +621,8 @@ function resolveTile(player) {
       const expenseCost = Math.abs(tile.points);
       const survivedExp = handleExpense(player, expenseCost);
       if (survivedExp) {
+        pointChange = -expenseCost;
+        pointType = "minus";
         showTilePopup(T.EXPENSE, tile.title, -expenseCost, eduText);
       }
       break;
@@ -533,6 +630,8 @@ function resolveTile(player) {
     case T.TAX:
       const cut = Math.floor(player.points * (tile.percent / 100));
       player.points -= cut;
+      pointChange = -cut;
+      pointType = "minus";
       showTilePopup(T.TAX, tile.title, -cut, `Pajak ${tile.percent}% dari poinmu.`);
       break;
 
@@ -540,6 +639,9 @@ function resolveTile(player) {
       if (player.points >= tile.points) {
         player.points -= tile.points;
         player.savingsPoints += tile.points;
+        // Animasi minus dulu (masuk tabungan)
+        pointChange = -tile.points;
+        pointType = "minus";
         showTilePopup(T.SAVE, tile.title, tile.points, "Uang diamankan ke Tabungan.");
       } else {
         showTilePopup(T.SAVE, "Gagal Menabung", "Gagal", "Poin di tangan tidak cukup.");
@@ -555,7 +657,9 @@ function resolveTile(player) {
       const penaltyCost = Math.abs(tile.points);
       const survivedPen = handleExpense(player, penaltyCost);
       if (survivedPen) {
-         showTilePopup(T.PENALTY, tile.title, -penaltyCost, "Denda pelanggaran.");
+        pointChange = -penaltyCost;
+        pointType = "minus";
+        showTilePopup(T.PENALTY, tile.title, -penaltyCost, "Denda pelanggaran.");
       }
       break;
 
@@ -564,11 +668,39 @@ function resolveTile(player) {
       break;
   }
 
+  // JIKA ADA PERUBAHAN POIN -> JALANKAN ANIMASI
+  if (pointChange !== 0) {
+    // Tunggu sebentar biar popup muncul dulu
+    await new Promise(r => setTimeout(r, 500));
+
+    // LOGIKA MOBILE: Jika layar kecil (< 768px), skip animasi "fly" karena layout tertutup/sempit
+    if (window.innerWidth >= 768) {
+      // [FIX] Pastikan pointType sesuai dengan pointChange jika masih neutral
+      // Ini memastikan color putih tidak muncul untuk expense/penalty
+      if (pointType === "neutral" && pointChange !== 0) {
+        pointType = pointChange > 0 ? "plus" : "minus";
+      }
+
+      let txt = (pointChange > 0 ? "+" : "") + fmt(pointChange);
+
+      // KHUSUS T.SAVE: 
+      // Logika game: poin berkurang dari dompet (-).
+      // Visual popup: "Menabung +8.000" (Hijau/Positif).
+      // User request: Samakan visual fly dengan popup board.
+      if (tile.type === T.SAVE && pointChange < 0) {
+        txt = "+" + fmt(Math.abs(pointChange)); // Tampilkan "+8.000"
+        pointType = "plus"; // Pakai warna Hijau
+      }
+
+      await animatePointFly(startRect, endRect, txt, pointType);
+    }
+  }
+
   // Handle Kuis (delay sedikit biar popup muncul dulu)
   if (runQuiz) {
-    setTimeout(() => {
-      handleQuiz(player);
-    }, 1200);
+    await new Promise(r => setTimeout(r, 1200));
+    // handleQuiz juga perlu async/await kalau mau nunggu selesai
+    await handleQuiz(player);
   }
 
   updatePlayerLevel(player);
@@ -638,8 +770,56 @@ function showInModalOrNotif(msg, eduMsg = "", time = 1500) {
   }
 }
 
+/**
+ * animatePointFly
+ * Membuat elemen teks melayang dari posisi kotak (startRect)
+ * menuju ke panel info pemain (endRect).
+ */
+function animatePointFly(startRect, endRect, text, typeClass) {
+  return new Promise((resolve) => {
+    // 1. Buat elemen
+    const el = document.createElement("div");
+    el.className = `flying-point ${typeClass}`;
+    el.textContent = text;
+    document.body.appendChild(el);
+
+    // 2. Set posisi awal
+    const startX = startRect.left + startRect.width / 2;
+    const startY = startRect.top + startRect.height / 2;
+
+    el.style.left = `${startX}px`;
+    el.style.top = `${startY}px`;
+    el.style.transform = "translate(-50%, -50%) scale(0.5)";
+
+    // Force reflow
+    void el.offsetWidth;
+
+    // 3. Set posisi akhir (target)
+    const endX = endRect.left + endRect.width / 2;
+    const endY = endRect.top + endRect.height / 2;
+
+    el.style.left = `${endX}px`;
+    el.style.top = `${endY}px`;
+    el.style.transform = "translate(-50%, -50%) scale(1.2)";
+    el.style.opacity = "0"; // Fade out saat sampai
+
+    // 4. Hapus setelah selesai
+    setTimeout(() => {
+      if (el.parentNode) el.parentNode.removeChild(el);
+      resolve();
+    }, 1000); // Sesuai durasi CSS transition (1s)
+  });
+}
+
+function getPlayerInfoRect(playerId) {
+  const box = playerInfoBoxes[playerId];
+  if (box) return box.getBoundingClientRect();
+  // Fallback ke tengah layar jika tidak ketemu
+  return { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+}
+
 /* ------------------------------------------------------
-  8. QUIZ SYSTEM
+   8. QUIZ SYSTEM
 ------------------------------------------------------ */
 /**
  * askQuiz
@@ -677,7 +857,7 @@ function askQuiz(bank, playerLevel = 1) {
       await new Promise((r) => setTimeout(r, 1000));
       try {
         quizModal.close();
-      } catch (e) {}
+      } catch (e) { }
       resolve({ answer, correct, item });
     };
 
@@ -737,11 +917,12 @@ async function movePlayerAnimated(player, steps) {
       applyStartBonus(player);
       updatePlayersPanel();
     }
-    updatePionPosition(player);
+    // Update SEMUA pion agar jika ada yang bergeser/masuk/keluar formation, visualnya ikut update
+    placeAllPions();
     await new Promise((r) => setTimeout(r, 220));
   }
   highlightLanding(player.pos);
-  resolveTile(player);
+  await resolveTile(player);
   updatePlayersPanel();
 }
 
@@ -774,9 +955,19 @@ async function handleQuiz(player) {
   if (correct) {
     const bonus = BONUS_BY_LEVEL[level] || BONUS_BY_LEVEL[1];
     player.points += bonus;
+
+    // Animasi Poin Kuis
+    const endRect = getPlayerInfoRect(player.id);
+    const startRect = { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 }; // Dari tengah (modal)
+
     showNotif(
-      `${player.name}: Jawaban benar! +${bonus.toLocaleString("id-ID")} poin`
+      `${player.name}: Jawaban benar!`,
+      `+${bonus.toLocaleString("id-ID")} poin`
     );
+    // Hanya animasi jika bukan mobile
+    if (window.innerWidth >= 768) {
+      await animatePointFly(startRect, endRect, "+" + fmt(bonus), "plus");
+    }
   } else {
     showNotif(`${player.name}: Jawaban salah.`);
   }
@@ -855,11 +1046,17 @@ diceEl.addEventListener("click", async () => {
 // =============================================
 
 // Klik Tombol Mulai (Start)
+// Klik Tombol Mulai (Start)
 startBtn.addEventListener("click", () => {
-  const n = selectedPlayerCount;
-  const categoryKey = selectedCategoryKey;
-  const selectedCategory = allGameData.kategori[categoryKey] || {};
+  startGameSession(selectedPlayerCount, selectedCategoryKey);
+});
 
+/**
+ * startGameSession
+ * Memulai sesi permainan baru dengan konfigurasi yang ada.
+ */
+function startGameSession(playerCount, categoryKey) {
+  const selectedCategory = allGameData.kategori[categoryKey] || {};
   const catTitleEl = document.getElementById("categoryTitle");
   if (catTitleEl) {
     catTitleEl.textContent = selectedCategory.nama || "Kategori Terpilih";
@@ -871,10 +1068,14 @@ startBtn.addEventListener("click", () => {
   currentEduText = selectedCategory.eduText || {};
 
   renderBoard();
-  createPlayers(n);
+  createPlayers(playerCount);
   turn = 0;
   started = true;
-  setTurnInfo();
+
+  updateTurnIndicator();
+  const firstP = currentPlayer();
+  diceValueEl.textContent = `Giliran ${firstP.name} melempar dadu!`;
+
   diceEl.removeAttribute("aria-disabled");
 
   // Reset flag
@@ -883,8 +1084,15 @@ startBtn.addEventListener("click", () => {
   document.getElementById("screen-setup").classList.remove("active");
   document.getElementById("screen-game").classList.add("active");
 
+  // Hide modal if open (for restart case)
+  const winnerModal = document.getElementById("winnerModal");
+  if (winnerModal) winnerModal.classList.remove("show");
+
+  const gameOverOverlay = document.getElementById("gameOverOverlay");
+  if (gameOverOverlay) gameOverOverlay.classList.remove("active");
+
   setTimeout(placeAllPions, 150);
-});
+}
 
 function updatePlayerLevel(player) {
   const oldLevel = player.level;
@@ -893,11 +1101,32 @@ function updatePlayerLevel(player) {
   else player.level = 1;
 
   if (player.level !== oldLevel) {
+    const isLevelUp = player.level > oldLevel;
+    const actionText = isLevelUp ? "naik ke" : "turun ke";
+
     showInModalOrNotif(
-      `${player.name} naik ke LEVEL ${player.level}!`,
+      `${player.name} ${actionText} LEVEL ${player.level}!`,
       "",
       1800
     );
+
+    // [ANIMATION] Level Change Fly
+    if (window.innerWidth >= 768) {
+      setTimeout(() => {
+        // Start from center screen (overlay) or player position? User requested similar to point fly.
+        // Let's start from center screen since the Modal/Notif appears there.
+        const startRect = { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+
+        // Target is the level badge we just ID'd
+        const levelBadgeEl = document.getElementById(`level-badge-${player.id}`);
+        const endRect = levelBadgeEl ? levelBadgeEl.getBoundingClientRect() : getPlayerInfoRect(player.id);
+
+        const txt = (isLevelUp ? "UP " : "DOWN ") + "Lv." + player.level;
+        const typeClass = isLevelUp ? "plus" : "minus"; // plus=green, minus=red
+
+        animatePointFly(startRect, endRect, txt, typeClass);
+      }, 500); // Delay slightly so it appears after modal shows up
+    }
   }
 }
 
@@ -953,12 +1182,12 @@ const closeHowToPlayBtn = document.getElementById("closeHowToPlayBtn");
 function openHowToPlayModal() {
   try {
     howToPlayModal.showModal();
-  } catch (e) {}
+  } catch (e) { }
 }
 function closeHowToPlayModal() {
   try {
     howToPlayModal.close();
-  } catch (e) {}
+  } catch (e) { }
 }
 
 if (howToPlayBtnLanding)
@@ -1011,131 +1240,131 @@ const goMessage = document.getElementById('goMessage');
 
 // 2. Fungsi Menampilkan Modal Custom
 function showCustomModal(title, message, isWin = false, isTotalGameOver = true) {
-    // Set konten teks
-    goTitle.textContent = title;
-    goMessage.textContent = message;
-    goIcon.textContent = isWin ? "🏆" : "💀";
-    
-    // Ubah warna border & teks judul (Hijau menang, Merah kalah)
-    const box = document.querySelector('.game-over-box');
-    if (box) {
-        if (isWin) {
-            box.style.borderColor = '#22c55e'; 
-            goTitle.style.color = '#22c55e';
-        } else {
-            box.style.borderColor = '#ef4444'; 
-            goTitle.style.color = '#ef4444';
-        }
+  // Set konten teks
+  goTitle.textContent = title;
+  goMessage.textContent = message;
+  goIcon.textContent = isWin ? "🏆" : "💀";
+
+  // Ubah warna border & teks judul (Hijau menang, Merah kalah)
+  const box = document.querySelector('.game-over-box');
+  if (box) {
+    if (isWin) {
+      box.style.borderColor = '#22c55e';
+      goTitle.style.color = '#22c55e';
+    } else {
+      box.style.borderColor = '#ef4444';
+      goTitle.style.color = '#ef4444';
     }
+  }
 
-    // --- LOGIKA TOMBOL (INI KUNCINYA) ---
-    const btnGroup = document.querySelector('.go-buttons');
-    if (btnGroup) {
-        btnGroup.innerHTML = ''; // Hapus tombol lama biar ga numpuk!
+  // --- LOGIKA TOMBOL (INI KUNCINYA) ---
+  const btnGroup = document.querySelector('.go-buttons');
+  if (btnGroup) {
+    btnGroup.innerHTML = ''; // Hapus tombol lama biar ga numpuk!
 
-        if (isTotalGameOver) {
-            // A. GAME BENAR-BENAR SELESAI (Menang / Single Player Kalah / Semua Lawan Kalah)
-            // Munculkan tombol Restart & Menu
-            
-            const btnRestart = document.createElement('button');
-            btnRestart.textContent = "Main Lagi";
-            btnRestart.onclick = () => location.reload();
-            
-            const btnMenu = document.createElement('button');
-            btnMenu.textContent = "Menu Utama";
-            btnMenu.className = "btn-secondary";
-            btnMenu.onclick = () => {
-                 // Reset Manual UI & State
-                 if(gameOverOverlay) gameOverOverlay.classList.remove('active');
-                 document.getElementById("screen-game").classList.remove("active");
-                 document.getElementById("screen-setup").classList.add("active");
-                 
-                 // Reset variable global
-                 started = false;
-                 turn = 0;
-                 players = [];
-                 isProcessingTurn = false;
-                 if(diceEl) diceEl.classList.remove("roll");
-                 if(diceValueEl) diceValueEl.textContent = "Lempar dadu!";
-            };
-    
-            btnGroup.appendChild(btnRestart);
-            btnGroup.appendChild(btnMenu);
+    if (isTotalGameOver) {
+      // A. GAME BENAR-BENAR SELESAI (Menang / Single Player Kalah / Semua Lawan Kalah)
+      // Munculkan tombol Restart & Menu
 
-        } else {
-            // B. CUMA ELIMINASI SATU PEMAIN (Multiplayer masih jalan)
-            // Cuma tombol OK biar modal hilang
-            
-            const btnOk = document.createElement('button');
-            btnOk.textContent = "Saya Mengerti (Lanjut Nonton)";
-            btnOk.className = "btn-secondary";
-            btnOk.onclick = () => {
-                if(gameOverOverlay) gameOverOverlay.classList.remove('active');
-                // Tidak perlu panggil nextTurn() manual di sini karena
-                // logika dadu/turn flow sudah akan skip pemain bangkrut otomatis.
-            };
-            btnGroup.appendChild(btnOk);
-        }
+      const btnRestart = document.createElement('button');
+      btnRestart.textContent = "Main Lagi";
+      btnRestart.onclick = () => restartGame();
+
+      const btnMenu = document.createElement('button');
+      btnMenu.textContent = "Menu Utama";
+      btnMenu.className = "btn-secondary";
+      btnMenu.onclick = () => {
+        // Reset Manual UI & State
+        if (gameOverOverlay) gameOverOverlay.classList.remove('active');
+        document.getElementById("screen-game").classList.remove("active");
+        document.getElementById("screen-setup").classList.add("active");
+
+        // Reset variable global
+        started = false;
+        turn = 0;
+        players = [];
+        isProcessingTurn = false;
+        if (diceEl) diceEl.classList.remove("roll");
+        if (diceValueEl) diceValueEl.textContent = "Lempar dadu!";
+      };
+
+      btnGroup.appendChild(btnRestart);
+      btnGroup.appendChild(btnMenu);
+
+    } else {
+      // B. CUMA ELIMINASI SATU PEMAIN (Multiplayer masih jalan)
+      // Cuma tombol OK biar modal hilang
+
+      const btnOk = document.createElement('button');
+      btnOk.textContent = "Saya Mengerti (Lanjut Nonton)";
+      btnOk.className = "btn-secondary";
+      btnOk.onclick = () => {
+        if (gameOverOverlay) gameOverOverlay.classList.remove('active');
+        // Tidak perlu panggil nextTurn() manual di sini karena
+        // logika dadu/turn flow sudah akan skip pemain bangkrut otomatis.
+      };
+      btnGroup.appendChild(btnOk);
     }
+  }
 
-    if(gameOverOverlay) gameOverOverlay.classList.add('active');
+  if (gameOverOverlay) gameOverOverlay.classList.add('active');
 }
 
 // 3. Fungsi Handle Game Over (Update Logika Multiplayer)
 function handleGameOver(player) {
   player.isBankrupt = true;
-  
+
   // Sembunyikan pion pemain yang kalah
   const pion = document.getElementById(`pion${player.id + 1}`);
-  if(pion) pion.style.display = 'none';
+  if (pion) pion.style.display = 'none';
 
   // Cek berapa pemain yang masih hidup
   const activePlayers = players.filter(p => !p.isBankrupt);
 
   // KONDISI 1: SINGLE PLAYER -> Kalah = Total Game Over
   if (players.length === 1) {
-      showCustomModal(
-        "GAME OVER!", 
-        "Uang dan tabunganmu habis. Coba lagi strategi keuanganmu!", 
-        false, 
-        true // TRUE = Tampilkan tombol Restart/Menu
-      );
-      return;
+    showCustomModal(
+      "GAME OVER!",
+      "Uang dan tabunganmu habis. Coba lagi strategi keuanganmu!",
+      false,
+      true // TRUE = Tampilkan tombol Restart/Menu
+    );
+    return;
   }
 
   // KONDISI 2: MULTIPLAYER -> Masih ada teman main
   if (players.length > 1) {
-      // Munculkan modal eliminasi (Bukan total game over)
-      showCustomModal(
-        "KAMU BANGKRUT!",
-        `Sayang sekali ${player.name}, kamu tereliminasi. Pemain lain masih berjuang!`,
-        false, 
-        false // FALSE = Cuma tombol "Saya Mengerti"
-      );
-      
-      // Cek apakah setelah ini sisa 1 orang (Pemenang)
-      checkWinnerBySurvival();
-  } 
+    // Munculkan modal eliminasi (Bukan total game over)
+    showCustomModal(
+      "KAMU BANGKRUT!",
+      `Sayang sekali ${player.name}, kamu tereliminasi. Pemain lain masih berjuang!`,
+      false,
+      false // FALSE = Cuma tombol "Saya Mengerti"
+    );
+
+    // Cek apakah setelah ini sisa 1 orang (Pemenang)
+    checkWinnerBySurvival();
+  }
 }
 
 // 4. Fungsi Cek Pemenang (Survival Mode)
 function checkWinnerBySurvival() {
   const activePlayers = players.filter(p => !p.isBankrupt);
-  
+
   // Jika Multiplayer DAN Sisa 1 orang yang bertahan
   if (players.length > 1 && activePlayers.length === 1) {
     const winner = activePlayers[0];
-    
+
     // Beri delay 2 detik agar modal "Kamu Bangkrut" milik loser sempat terbaca
     // sebelum ditimpa modal "Pemenang"
     setTimeout(() => {
-        showCustomModal(
-            "PEMENANG!",
-            `Selamat ${winner.name}! Kamu adalah satu-satunya yang bertahan!`,
-            true, // Menang (Hijau)
-            true  // Total Game Over (Ada tombol Restart)
-        );
-    }, 2000); 
+      showCustomModal(
+        "PEMENANG!",
+        `Selamat ${winner.name}! Kamu adalah satu-satunya yang bertahan!`,
+        true, // Menang (Hijau)
+        true  // Total Game Over (Ada tombol Restart)
+      );
+    }, 2000);
   }
 }
 
@@ -1148,3 +1377,76 @@ function checkWinnerBySurvival() {
  */
 
 loadGameData();
+
+/* ======================================================
+  12. WINNER MODAL & CONFETTI LOGIC
+====================================================== */
+const winnerModal = document.getElementById("winnerModal");
+const winnerNameEl = document.getElementById("winnerName");
+const confettiContainer = document.getElementById("confetti-container");
+const backToMenuBtn = document.getElementById("backToMenuBtn");
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+if (backToMenuBtn) {
+  backToMenuBtn.addEventListener("click", () => {
+    resetGameToMenu();
+  });
+}
+
+if (playAgainBtn) {
+  playAgainBtn.addEventListener("click", () => {
+    restartGame();
+  });
+}
+
+function restartGame() {
+  // Restart dengan setting yang SAMA
+  if (typeof startGameSession === 'function') {
+    startGameSession(selectedPlayerCount, selectedCategoryKey);
+  }
+}
+
+function showWinnerModal(name) {
+  if (!winnerModal) return;
+
+  if (winnerNameEl) winnerNameEl.textContent = name;
+  winnerModal.classList.add("show");
+  createConfetti();
+  playDiceSound(); // Optional: sound effect
+}
+
+function createConfetti() {
+  if (!confettiContainer) return;
+  confettiContainer.innerHTML = "";
+
+  const colors = ["#ef4444", "#22c55e", "#3b82f6", "#f59e0b", "#a855f7"];
+
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "%";
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+    confetti.style.animationDelay = Math.random() * 5 + "s";
+    confettiContainer.appendChild(confetti);
+  }
+}
+
+function resetGameToMenu() {
+  winnerModal.classList.remove("show");
+  if (typeof gameOverOverlay !== 'undefined' && gameOverOverlay) gameOverOverlay.classList.remove('active');
+  document.getElementById("screen-game").classList.remove("active");
+  document.getElementById("screen-setup").classList.add("active");
+
+  started = false;
+  turn = 0;
+  players = [];
+  isProcessingTurn = false;
+
+  diceEl.classList.remove("roll");
+  diceEl.removeAttribute("aria-disabled");
+  diceValueEl.textContent = "Lempar dadu!";
+
+  pionEls.forEach((p) => (p.style.display = "none"));
+  playerInfoBoxes.forEach((box) => (box.style.display = "none"));
+}
