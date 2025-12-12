@@ -196,6 +196,10 @@ button:disabled {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.landing-container #gassMulaiBtn {
+  margin-right: .5rem;
+}
+
 .setup-container h2 {
   margin-top: 20px;
 }
