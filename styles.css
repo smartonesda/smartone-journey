@@ -707,9 +707,6 @@ dialog {
   font-size: 1.05rem;
   margin-bottom: 8px;
 }
-.quiz-section {
-  /* Quiz modal specific layout */
-}
 #quizChoices {
   display: grid;
   gap: 10px;
@@ -1393,6 +1390,7 @@ dialog {
   color: #4ade80; /* Hijau terang */
   background: linear-gradient(to bottom, #4ade80, #22c55e);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -1400,6 +1398,7 @@ dialog {
   color: #f87171; /* Merah terang */
   background: linear-gradient(to bottom, #f87171, #ef4444);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

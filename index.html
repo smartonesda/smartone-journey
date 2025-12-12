@@ -11,8 +11,12 @@
 </head>
 
 <body>
+  <!-- Landing screen (ID: screen-landing)
+       Digunakan sebagai layar pembuka. Elemen penting:
+       - `#gassMulaiBtn` -> membuka screen setup (lihat handler `gassMulaiBtn`).
+       - `#howToPlayBtnLanding` -> membuka modal `howToPlayModal` (fungsi `openHowToPlayModal`).
+  -->
   <div id="screen-landing" class="screen active">
-    <!-- Landing Screen: halaman pembuka dengan tombol mulai dan info -->
     
     <div class="landing-container">
       <div class="header-logos">
@@ -31,8 +35,13 @@
     </div>
   </div>
   
+  <!-- Setup screen (ID: screen-setup)
+       Area pilihan sebelum permainan dimulai. Elemen terkait JS:
+       - `#category-card-group` diisi oleh `populateCategorySelect()` dari `data_game.json`.
+       - Tombol di `#player-count-group` mengubah `selectedPlayerCount`.
+       - `#startBtn` memicu inisialisasi game: set `currentTiles`, `renderBoard()`, `createPlayers()`.
+  -->
   <div id="screen-setup" class="screen">
-    <!-- Setup Screen: pilih kategori dan jumlah pemain -->
     <div class="setup-container">
       <h2>Pilih Kategori:</h2>
       <div id="category-card-group" class="card-group"></div>
@@ -50,8 +59,19 @@
     </div>
   </div>
   
+  <!-- Game screen (ID: screen-game)
+       Area utama permainan. Elemen penting dan hubungan ke `game.js`:
+       - `#howToPlayBtnGame` -> membuka modal `howToPlayModal`.
+       - `#backBtnGame` -> kembali ke menu & mereset state permainan.
+       - `#sidebar-toggle-btn` -> toggle panel info pemain.
+       - `#player-info-container` diisi oleh `updatePlayersPanel()`.
+       - `#board` dirender oleh `renderBoard()`.
+       - `#dice` (`#diceOverlay`) -> klik men-trigger `rollDiceAnimated()` dan `movePlayerAnimated()`.
+       - `#pion1..#pion4` -> posisi diatur oleh `updatePionPosition()` dan `placeAllPions()`.
+       - `#notifPopup` -> menampilkan notifikasi via `showNotif()` atau `showTilePopup()`.
+       - `#gameOverOverlay` -> modal untuk game-over yang di-handle oleh `showCustomModal()` dan `handleGameOver()`.
+  -->
   <div id="screen-game" class="screen">
-    <!-- Game Screen: papan, pion, dadu, dan overlay permainan -->
     <button id="howToPlayBtnGame" class="btn-help" aria-label="Cara Bermain">
       ?
     </button>
@@ -76,8 +96,12 @@
           <div id="player4-info" class="player-info-box pos-br"></div>
         </div>
 
+        <!-- Board: grid 6x6. Dibuat ulang oleh `renderBoard()` menggunakan `path` dan `currentTiles`. -->
         <div id="board" class="board"></div>
 
+        <!-- Dice overlay: menampilkan dadu, instruksi giliran, dan status lemparan.
+             Klik `#dice` memicu alur lemparan (guard `isProcessingTurn` mencegah spam).
+        -->
         <div id="diceOverlay">
           <div id="dice" role="button" tabindex="0" aria-label="Dadu">
             <div class="dice-container">
@@ -89,10 +113,12 @@
               <div class="face left">4</div>
             </div>
           </div>
+          <!-- `#turnInfo` di-update oleh `setTurnInfo()`; `#diceValue` menampilkan hasil/instruksi. -->
           <div id="turnInfo" class="turn-info-center">Menunggu...</div>
           <div id="diceValue" class="dice-instruction">Lempar dadu!</div>
         </div>
 
+        <!-- Pion pemain (id `pion1`..`pion4`) ditempatkan absolut di atas board; posisi diatur oleh JS. -->
         <div id="pion1" class="pion" aria-hidden="true">♟</div>
         <div id="pion2" class="pion" aria-hidden="true">♟</div>
         <div id="pion3" class="pion" aria-hidden="true">♟</div>
@@ -100,6 +126,11 @@
       </div>
     </div>
 
+    <!-- Quiz Modal (ID: quizModal)
+         - `askQuiz()` menulis pertanyaan ke `#quizQuestion` dan pilihan ke `#quizChoices`.
+         - `#quizSubmit` di-bind saat `askQuiz()` dipanggil untuk menangkap jawaban dan resolve Promise.
+         - `modalNotif` menampilkan pesan singkat di dalam dialog jika perlu.
+    -->
     <dialog id="quizModal">
       <p id="quizQuestion" class="quiz-question"></p>
       <div id="quizChoices"></div>
@@ -109,7 +140,9 @@
       </div>
     </dialog>
 
+    <!-- `#notifPopup` dipakai oleh `showNotif()` dan `showTilePopup()` untuk pesan singkat -->
     <div id="notifPopup" class="notif-popup" aria-live="polite"></div>
+    <!-- Game Over Overlay: konten diisi/diubah oleh `showCustomModal()` dan `handleGameOver()` -->
     <div id="gameOverOverlay" class="custom-overlay">
       <div class="game-over-box">
         <div class="go-icon" id="goIcon">🏆</div>

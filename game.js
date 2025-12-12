@@ -599,7 +599,7 @@ function toPoinStr(n) {
 }
 
 /* ------------------------------------------------------
-   6. NOTIFICATIONS
+  7. NOTIFICATIONS
 ------------------------------------------------------ */
 /**
  * showNotif
@@ -639,7 +639,7 @@ function showInModalOrNotif(msg, eduMsg = "", time = 1500) {
 }
 
 /* ------------------------------------------------------
-   7. QUIZ SYSTEM
+  8. QUIZ SYSTEM
 ------------------------------------------------------ */
 /**
  * askQuiz
@@ -690,7 +690,7 @@ function askQuiz(bank, playerLevel = 1) {
 }
 
 /* ------------------------------------------------------
-   8. ANIMATION & FLOW
+  9. ANIMATION & FLOW
 ------------------------------------------------------ */
 /**
  * rollDiceAnimated
@@ -820,7 +820,7 @@ function playDiceSound() {
 }
 
 /* ------------------------------------------------------
-   9. EVENT LISTENERS & START
+  10. EVENT LISTENERS & START
 ------------------------------------------------------ */
 
 // === KLIK DADU DENGAN ANTI-SPAM & JEDA ===
@@ -998,9 +998,9 @@ function scrollToTurnPanel() {
 }
 
 /* ======================================================
-   MODAL & GAME OVER LOGIC (FIXED)
-   Gantikan semua fungsi handleGameOver, showCustomModal, 
-   dan checkWinnerBySurvival yang lama dengan ini.
+  11. MODAL & GAME OVER LOGIC (FIXED)
+  Gantikan semua fungsi handleGameOver, showCustomModal, 
+  dan checkWinnerBySurvival yang lama dengan ini.
 ====================================================== */
 
 // 1. Ambil Elemen DOM Modal (Pastikan ID di HTML sudah sesuai)
