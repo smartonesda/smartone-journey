@@ -21,6 +21,7 @@ const quizModal = document.getElementById("quizModal");
 const quizQuestion = document.getElementById("quizQuestion");
 const quizChoices = document.getElementById("quizChoices");
 const quizSubmit = document.getElementById("quizSubmit");
+const quizSkip = document.getElementById("quizSkip"); // [BARU] Tombol Skip
 const modalNotif = document.getElementById("modalNotif");
 
 // --- ELEMENT PEMAIN & PAPAN ---
@@ -874,6 +875,15 @@ function askQuiz(bank, playerLevel = 1) {
       ev.preventDefault();
       const sel = quizChoices.querySelector('input[name="quizOpt"]:checked');
       const answer = sel ? Number(sel.value) : null;
+
+      // Jika user klik Jawab tapi belum pilih radio -> anggap salah atau suruh pilih? 
+      // Existing logic allows null here if answer is null. 
+      // But typically "Jawab" checks correctness.
+      if (answer === null) {
+        showInModalOrNotif("Pilih jawaban dulu!");
+        return;
+      }
+
       const correct = answer === item.correct;
 
       modalNotif.textContent = correct ? `Jawaban benar!` : `Jawaban salah.`;
@@ -885,6 +895,22 @@ function askQuiz(bank, playerLevel = 1) {
       } catch (e) { }
       resolve({ answer, correct, item });
     };
+
+    // [BARU] Handler Tombol Skip
+    if (quizSkip) {
+      quizSkip.onclick = async (ev) => {
+        ev.preventDefault();
+        modalNotif.textContent = "Soal dilewati...";
+        modalNotif.style.display = "block";
+
+        await new Promise((r) => setTimeout(r, 800));
+        try {
+          quizModal.close();
+        } catch (e) { }
+        // Return null answer -> handleQuiz will say "tidak menjawab"
+        resolve({ answer: null, correct: false, item: null });
+      };
+    }
 
     try {
       quizModal.showModal();
@@ -1300,38 +1326,58 @@ function updatePlayerLevel(player) {
 const backBtnGame = document.getElementById("backBtnGame");
 if (backBtnGame) {
   backBtnGame.addEventListener("click", () => {
-    if (
-      !confirm(
-        "Yakin ingin kembali ke menu utama? Progres permainan akan hilang."
-      )
-    )
-      return;
+    // [UPDATED] Gunakan Custom Modal
+    const confirmModal = document.getElementById("confirmationModal");
+    const btnYes = document.getElementById("btnConfirmYes");
+    const btnNo = document.getElementById("btnConfirmNo");
 
-    document.getElementById("screen-game").classList.remove("active");
-    document.getElementById("screen-setup").classList.add("active");
+    if (confirmModal) {
+      confirmModal.showModal();
 
-    started = false;
-    turn = 0;
-    players = [];
-    isProcessingTurn = false;
+      // Handler Yes
+      btnYes.onclick = () => {
+        confirmModal.close();
+        doExitGame();
+      };
 
-    // HAPUS BARIS 'diceEl.textContent = "🎲";' KARENA MENGHANCURKAN STRUKTUR 3D DADU.
-
-    // PERBAIKAN: Hanya hapus kelas CSS dan reset atribut
-    diceEl.classList.remove("roll");
-    diceEl.removeAttribute("aria-disabled"); // Pastikan dice tidak dalam status 'disabled'
-
-    // PERBAIKAN: Reset teks instruksi dadu (gunakan diceValueEl, bukan diceEl)
-    diceValueEl.textContent = "Lempar dadu!";
-
-    // Reset pion dan info pemain
-    pionEls.forEach((p) => (p.style.display = "none"));
-    playerInfoBoxes.forEach((box) => (box.style.display = "none"));
-
-    // Stop Musik
-    stopMusic();
+      // Handler No
+      btnNo.onclick = () => {
+        confirmModal.close();
+      };
+    } else {
+      // Fallback logic
+      if (!confirm("Yakin ingin kembali ke menu utama?")) return;
+      doExitGame();
+    }
   });
 }
+
+function doExitGame() {
+  document.getElementById("screen-game").classList.remove("active");
+  document.getElementById("screen-setup").classList.add("active");
+
+  started = false;
+  turn = 0;
+  players = [];
+  isProcessingTurn = false;
+
+  // HAPUS BARIS 'diceEl.textContent = "🎲";' KARENA MENGHANCURKAN STRUKTUR 3D DADU.
+
+  // PERBAIKAN: Hanya hapus kelas CSS dan reset atribut
+  diceEl.classList.remove("roll");
+  diceEl.removeAttribute("aria-disabled"); // Pastikan dice tidak dalam status 'disabled'
+
+  // PERBAIKAN: Reset teks instruksi dadu (gunakan diceValueEl, bukan diceEl)
+  diceValueEl.textContent = "Lempar dadu!";
+
+  // Reset pion dan info pemain
+  pionEls.forEach((p) => (p.style.display = "none"));
+  playerInfoBoxes.forEach((box) => (box.style.display = "none"));
+
+  // Stop Musik
+  stopMusic();
+}
+
 
 const gassMulaiBtn = document.getElementById("gassMulaiBtn");
 if (gassMulaiBtn) {

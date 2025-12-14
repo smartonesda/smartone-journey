@@ -164,6 +164,7 @@
       <div id="modalNotif" class="modalNotif"></div>
       <div class="quiz-footer">
         <button id="quizSubmit">Jawab</button>
+        <button id="quizSkip" class="btn-secondary" style="margin-left: 10px; margin-top: 0;">Lewati</button>
       </div>
     </dialog>
 
@@ -249,6 +250,19 @@
     </div>
     <div class="modal-footer">
       <button id="closeHowToPlayBtn" class="btn-primary">Mengerti!</button>
+    </div>
+  </dialog>
+
+  <dialog id="confirmationModal">
+    <div class="modal-header">
+      <h2>⚠️ Konfirmasi</h2>
+    </div>
+    <div class="modal-content" style="text-align: center;">
+      <p>Yakin ingin kembali ke menu utama? Progres permainan akan hilang.</p>
+    </div>
+    <div class="modal-footer" style="justify-content: center; gap: 15px;">
+      <button id="btnConfirmYes" style="background-color: var(--color-expense);">Ya, Keluar</button>
+      <button id="btnConfirmNo" class="btn-secondary" style="margin-top: 0;">Batal</button>
     </div>
   </dialog>
 

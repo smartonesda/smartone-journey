@@ -745,7 +745,8 @@ dialog {
 }
 
 /* Quiz Modal */
-#quizModal {
+#quizModal,
+#confirmationModal {
   background: var(--bg-medium);
   color: var(--text-light);
   padding: 22px;
@@ -763,7 +764,8 @@ dialog {
   z-index: 1000;
 }
 
-#quizModal[open] {
+#quizModal[open],
+#confirmationModal[open] {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   visibility: visible;
@@ -856,7 +858,7 @@ dialog {
   background: linear-gradient(135deg, var(--accent-blue), #0099cc);
   padding: 20px 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
