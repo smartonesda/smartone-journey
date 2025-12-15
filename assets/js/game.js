@@ -1421,6 +1421,13 @@ function doExitGame() {
 const gassMulaiBtn = document.getElementById("gassMulaiBtn");
 if (gassMulaiBtn) {
   gassMulaiBtn.addEventListener("click", () => {
+    // [UPDATED] Request Fullscreen ONLY here
+    const docEl = document.documentElement;
+    const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.msRequestFullscreen;
+    if (requestFS) {
+      requestFS.call(docEl).catch(e => console.log("Fullscreen blocked or failed:", e));
+    }
+
     document.getElementById("screen-landing").classList.remove("active");
     document.getElementById("screen-setup").classList.add("active");
   });
@@ -1818,43 +1825,15 @@ function performInitialLoading() {
 }
 
 // Init when DOM ready
+// Init when DOM ready
 document.addEventListener("DOMContentLoaded", () => {
-  enableAutoFullscreen(); // [BARU] Coba fullscreen secepat mungkin
+  // enableAutoFullscreen(); // [REMOVED] Agar tidak auto fullscreen saat klik apa saja
   performInitialLoading();
 });
 
-/**
- * [BARU] enableAutoFullscreen
- * Mencoba masuk fullscreen saat load (biasanya diblokir browser),
- * jadi kita pasang fallback: klik PERTAMA di mana saja = Auto Fullscreen.
- */
-function enableAutoFullscreen() {
-  const docEl = document.documentElement;
-  const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.msRequestFullscreen;
-
-  if (!requestFS) return; // Browser gak support
-
-  // 1. Coba langsung (Best effort)
-  requestFS.call(docEl).catch(e => {
-    console.log("Auto-fullscreen blocked by browser (normal behavior). Waiting for user interaction.");
-  });
-
-  // 2. Fallback: Listener global "Click Anywhere"
-  // Sekali klik lgsg fullscreen, habis itu hapus listener biar gak ganggu.
-  const interactions = ["click", "touchstart", "keydown"];
-
-  const onUserInteract = () => {
-    requestFS.call(docEl).then(() => {
-      // Sukses -> Hapus listener
-      interactions.forEach(evt => document.removeEventListener(evt, onUserInteract));
-    }).catch(e => {
-      // Masih gagal? Biarin aja, mungkin user nolak permission
-      console.log("Fullscreen retry failed:", e);
-    });
-  };
-
-  interactions.forEach(evt => document.addEventListener(evt, onUserInteract, { once: true }));
-}
-
+// [REMOVED] enableAutoFullscreen function to prevent "Cara Bermain" from triggering fullscreen
+/*
+function enableAutoFullscreen() { ... }
+*/
 
 // loadGameData(); // Moved to performInitialLoading
